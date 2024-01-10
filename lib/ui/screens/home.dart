@@ -28,7 +28,19 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              Padding(
+              PopupMenuButton<int>(
+                //onSelected: (item) =>  onSelected(),
+                itemBuilder: (context) => [
+                  const PopupMenuItem<int>(
+                    value: 0,
+                    child: Text("Settings"),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                width: 10,
+              ),
+              /*Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: CircleAvatar(
                     child: CachedNetworkImage(
@@ -38,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 )),
-              ),
+              ),*/
             ],
             bottom: const TabBar(
                 indicatorColor: AppColors.whiteColor,
@@ -50,7 +62,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(LineIcons.clockAlt),
                       SizedBox(width: 6),
-                      Text('A venir'),
+                      Text('Programmé'),
                     ]),
                   ),
                   Tab(

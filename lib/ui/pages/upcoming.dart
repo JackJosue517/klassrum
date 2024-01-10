@@ -23,9 +23,16 @@ class UpComingPage extends StatelessWidget {
                       const CircularProgressIndicator(),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 )),
-                title: const Text("INF 331 - Séance de cours #02"),
-                subtitle: const Text("Commentaires et Notes sur la session"),
-                trailing: const Text("13:14"),
+                isThreeLine: true,
+                title: const Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
+                subtitle: const Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "Commentaires et Notes sur la session"),
+                trailing: const Text("Dans 02 jours"),
               )),
     );
   }
