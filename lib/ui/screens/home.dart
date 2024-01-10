@@ -19,32 +19,55 @@ class HomeScreen extends StatelessWidget {
             actions: <Widget>[
               IconButton(
                 onPressed: () {},
-                icon: const Icon(LineIcons.bellAlt),
+                icon: const Icon(
+                  LineIcons.bellAlt,
+                  size: 25,
+                ),
                 tooltip: 'Notifications',
               ),
-              CircleAvatar(
-                  child: CachedNetworkImage(
-                imageUrl: "http://via.placeholder.com/40x40",
-                placeholder: (context, url) =>
-                    const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
-              )),
+              const SizedBox(
+                width: 10,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: CircleAvatar(
+                    child: CachedNetworkImage(
+                  imageUrl:
+                      "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pngwing.com%2Fen%2Fsearch%3Fq%3Duser&psig=AOvVaw3PXfBCf6Tq_huANkws3PC8&ust=1704978311197000&source=images&cd=vfe&ved=0CBIQjRxqFwoTCNDNz6bx0oMDFQAAAAAdAAAAABAE",
+                  placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                )),
+              ),
             ],
-            bottom:
-                const TabBar(dividerColor: AppColors.primaryColor, tabs: <Tab>[
-              Tab(
-                icon: Icon(LineIcons.clockAlt),
-                text: "À venir",
-              ),
-              Tab(
-                icon: Icon(LineIcons.fileAlt),
-                text: "Ressources",
-              ),
-              Tab(
-                icon: Icon(LineIcons.history),
-                text: "Historique",
-              ),
-            ]),
+            bottom: const TabBar(
+                indicatorColor: AppColors.whiteColor,
+                labelColor: AppColors.whiteColor,
+                unselectedLabelColor: AppColors.grayColor,
+                dividerColor: AppColors.primaryColor,
+                tabs: <Tab>[
+                  Tab(
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(LineIcons.clockAlt),
+                      SizedBox(width: 6),
+                      Text('A venir'),
+                    ]),
+                  ),
+                  Tab(
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(LineIcons.file),
+                      SizedBox(width: 6),
+                      Text('Ressources'),
+                    ]),
+                  ),
+                  Tab(
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(LineIcons.history),
+                      SizedBox(width: 6),
+                      Text('Historique'),
+                    ]),
+                  ),
+                ]),
           ),
           body: const TabBarView(children: [
             UpComingPage(),

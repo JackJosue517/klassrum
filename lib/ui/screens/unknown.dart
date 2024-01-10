@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klassrum/ui/configs/styles.dart';
 
 class UnknownScreen extends StatelessWidget {
   const UnknownScreen({super.key});
@@ -9,8 +10,11 @@ class UnknownScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Unknown Screen"),
       ),
-      body: const Center(
-        child: Text("Vous tentez d'accéder à une route non implémentée !!!"),
+      body: Center(
+        child: Text(
+          "Vous tentez d'accéder à une route non implémentée !!!",
+          style: AppText.headline4.copyWith(),
+        ),
       ),
     );
   }
