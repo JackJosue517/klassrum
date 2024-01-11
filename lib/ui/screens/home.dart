@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
               const SizedBox(
-                width: 10,
+                width: 5,
               ),
             ],
             bottom: const TabBar(
@@ -48,19 +48,16 @@ class HomeScreen extends StatelessWidget {
                   Tab(
                     child: Row(
                     mainAxisSize: MainAxisSize.min, children: [
-                      Icon(LineIcons.clockAlt),
                       Text('A venir'),
                     ]),
                   ),
                   Tab(
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(LineIcons.file),
                       Text('Ressources'),
                     ]),
                   ),
                   Tab(
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(LineIcons.history),
                       Text('Historique'),
                     ])
                   ),

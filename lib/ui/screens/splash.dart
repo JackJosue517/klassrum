@@ -9,8 +9,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash:
-          "https://www.postermywall.com/index.php/posterbuilder/copy/6a7c4c4c775f2c208a4448d0988994735",
+          "assets/img/logo.jpg",
       nextScreen: const LoginScreen(),
+      splashIconSize: 250,
       splashTransition: SplashTransition.fadeTransition,
     );
   }

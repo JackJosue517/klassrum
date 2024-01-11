@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:klassrum/ui/configs/styles.dart';
+import 'package:sdp_transform/sdp_transform.dart';
 
 class CallRoomScreen extends StatefulWidget {
   const CallRoomScreen({super.key});
@@ -11,12 +14,20 @@ class CallRoomScreen extends StatefulWidget {
 
 class _CallRoomScreenState extends State<CallRoomScreen> {
   final _localVideoRenderer = RTCVideoRenderer();
+  final _remoteVideoRenderer = RTCVideoRenderer();
+  final _sdpController = TextEditingController();
+
+  bool _offer = false;
+
+  RTCPeerConnection? _peerConnection;
+  late MediaStream _localStream;
 
   void initRenderers() async {
     await _localVideoRenderer.initialize();
+    await _remoteVideoRenderer.initialize();
   }
 
-  void _getUserMedia() async {
+  dynamic _getUserMedia() async {
     final Map<String, dynamic> mediaConstraints = {
       'audio': true,
       'video': {
@@ -27,39 +38,198 @@ class _CallRoomScreenState extends State<CallRoomScreen> {
     MediaStream stream =
         await navigator.mediaDevices.getUserMedia(mediaConstraints);
     _localVideoRenderer.srcObject = stream;
+
+    return stream;
+  }
+
+  _createPeerConnection() async {
+    Map<String, dynamic> configuration = {
+      "iceServers": [
+        {"url": "stun:stun.l.google.com:19302"},
+      ]
+    };
+
+    final Map<String, dynamic> offerSdpConstraints = {
+      "mandatory": {
+        "OfferToReceiveAudio": true,
+        "OfferToReceiveVideo": true,
+      },
+      "optional": [],
+    };
+
+    _localStream = await _getUserMedia();
+
+    RTCPeerConnection pc = await createPeerConnection(configuration, offerSdpConstraints);
+    pc.addStream(_localStream);
+
+    pc.onIceCandidate = (e) {
+      if(e.candidate != null){
+        print(json.encode({
+          'candidate': e.candidate,
+          'sdpMid': e.sdpMid,
+          'sdpMlineIndex': e.sdpMLineIndex,
+        }));
+      }
+    };
+
+    pc.onIceConnectionState = (e) {
+      print(e);
+    };
+
+    pc.onAddStream = (stream) {
+      print('AddStream: ' + stream.id);
+      _remoteVideoRenderer.srcObject = stream;
+    };
+
+    return pc;
+  }
+
+  void _createOffer() async{
+    RTCSessionDescription description = await _peerConnection!.createOffer({'offerToReceiveVideo': 1});
+    var session = parse(description.sdp.toString());
+    print(json.encode(session));
+    _offer = true;
+
+    _peerConnection!.setLocalDescription(description);
+  }
+
+  void _createAnswer() async {
+    RTCSessionDescription description = await _peerConnection!.createAnswer({'offerToReceiveVideo': 1});
+    var session = parse(description.sdp.toString());
+    print(json.encode(session));
+    _offer = true;
+
+    _peerConnection!.setLocalDescription(description);
+  }
+
+  void _setRemoteDescription() async {
+    String jsonString = _sdpController.text;
+    dynamic session = await jsonDecode(jsonString);
+
+    String sdp = write(session, null);
+
+    RTCSessionDescription description = RTCSessionDescription(sdp, _offer ? 'answer' : 'offer');
+    print(description.toMap());
+
+    await _peerConnection!.setRemoteDescription(description);
+  }
+
+  void _addCandidate() async{
+    String jsonString = _sdpController.text;
+    dynamic session = await jsonDecode(jsonString);
+    print(session['candidate']);
+    dynamic candidate = RTCIceCandidate(session['candidate'], session['sdpMid'], session['sdpMLineIndex']);
+
+    await _peerConnection!.addCandidate(candidate);
   }
 
   @override
   void initState() {
     super.initState();
     initRenderers();
-    _getUserMedia();
+    _localStream = _getUserMedia();
   }
 
   @override
   void dispose() async {
     await _localVideoRenderer.dispose();
+    _sdpController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        extendBodyBehindAppBar: true,
         appBar: AppBar(
-          backgroundColor: AppColors.transparentColor,
-          title: const Text('Call Room'),
+          title: Text('Session de cours'),
         ),
-        body: Stack(
+        body: Column(
           children: [
-            Positioned(
-              top: 0.0,
-              right: 0.0,
-              left: 0.0,
-              bottom: 0.0,
-              child: RTCVideoView(_localVideoRenderer),
-            )
+            videoRenderers(),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: TextField(
+                      controller: _sdpController,
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 4,
+                      maxLength: TextField.noMaxLength,
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      onPressed: _createOffer,
+                      child: const Text("Offer"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: _createAnswer,
+                      child: const Text("Answer"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: _setRemoteDescription,
+                      child: const Text("Set Remote Description"),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    ElevatedButton(
+                      onPressed: _addCandidate,
+                      child: const Text("Set Candidate"),
+                    ),
+                  ],
+                )
+              ],
+            ),
           ],
         ));
+
+    /*Stack(
+      fit: StackFit.expand,
+      children: [
+        Positioned(
+          top: 0.0,
+          right: 0.0,
+          left: 0.0,
+          bottom: 0.0,
+          child: RTCVideoView(_localVideoRenderer),
+        )
+      ],
+    );*/
   }
+
+  SizedBox videoRenderers() => SizedBox(
+    height: 210,
+    child: Row(
+      children: [
+        Flexible(
+            child: Container(
+              key: const Key('local'),
+              margin: const EdgeInsets.all(5.0),
+              decoration: const BoxDecoration(color: AppColors.blackColor),
+              child: RTCVideoView(_localVideoRenderer),
+            ),
+        ),
+        Flexible(
+          child: Container(
+            key: const Key('remote'),
+            margin: const EdgeInsets.all(5.0),
+            decoration: const BoxDecoration(color: AppColors.blackColor),
+            child: RTCVideoView(_remoteVideoRenderer),
+          ),
+        ),
+      ],
+    )
+  );
 }

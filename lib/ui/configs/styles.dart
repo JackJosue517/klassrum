@@ -13,6 +13,8 @@ class AppColors {
   static const Color grayColor = Color.fromARGB(84, 239, 254, 231);
 
   static const Color transparentColor = Colors.transparent;
+
+  static const Color blackColor = Color.fromARGB(0, 0, 0, 0);
 }
 
 class AppText {
