@@ -15,7 +15,9 @@ class CourseDetailsScreen extends StatelessWidget {
         child: Text("Course Description"),
       ),
       floatingActionButton: FloatingActionButton(
-          elevation: 0, onPressed: () {}, child: const Icon(Icons.join_right)),
+          elevation: 0, onPressed: () {
+            Navigator.of(context).pushNamed('/call-room');
+      }, child: const Icon(Icons.join_right)),
     );
   }
 }

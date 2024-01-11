@@ -75,7 +75,7 @@ class LoginScreen extends StatelessWidget {
         
                   DefaultButton(
                     btnText: "Se connecter",
-                    btnFunction: () => null,
+                    btnFunction: () => Navigator.of(context).pushReplacementNamed('/home'),
                   )
         
                 ],
