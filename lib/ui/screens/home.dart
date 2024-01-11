@@ -62,21 +62,21 @@ class HomeScreen extends StatelessWidget {
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(LineIcons.clockAlt),
                       SizedBox(width: 6),
-                      Text('Programmé'),
+                      Text('A venir'),
                     ]),
                   ),
                   Tab(
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(LineIcons.file),
                       SizedBox(width: 6),
-                      Text('Ressources'),
+                      Text('Rsrc'),
                     ]),
                   ),
                   Tab(
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Icon(LineIcons.history),
                       SizedBox(width: 6),
-                      Text('Historique'),
+                      Text('His'),
                     ]),
                   ),
                 ]),
