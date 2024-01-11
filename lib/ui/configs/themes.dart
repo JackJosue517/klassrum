@@ -18,6 +18,7 @@ class AppTheme {
     return const AppBarTheme(
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.whiteColor,
+      elevation: 0.0,
     );
   }
 }
