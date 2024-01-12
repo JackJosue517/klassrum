@@ -74,49 +74,62 @@ class ResourcePage extends StatelessWidget {
                   child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                          style:
-                              TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.bold,
-                              ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"
+                      Row(
+                        children: [
+                          const Expanded(
+                            child: Text(
+                                style:
+                                TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"
+                            ),
+                          ),
+                          const Gap(8),
+                          Container(
+                            padding: const EdgeInsets.all(4),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.primaryColor,
+                            ),
+                            child: Center(
+                                child: Text("15",
+                                    style: AppText.headline6
+                                        .copyWith(color: AppColors.whiteColor)
+                                )
+                            ),
+                          ),
+                        ],
                       ),
                       const Gap(4),
-                      Text(
-                        style:
-                          TextStyle(
-                            fontSize: 13,
-                            color: Colors.grey[700],
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              style:
+                                TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.grey[700],
+                                ),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              "CARNET_DE_BORD.pdf jhe,gj hk oezfnhkjleza:;,nfyc_èç",
+                            ),
                           ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        "CARNET_DE_BORD.pdf",
+                          const Gap(8),
+                          const Text("12:45"),
+                        ],
+
                       ),
+
                     ],
                   ),
                 ),
-                const Gap(8),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.primaryColor,
-                        ),
-                        child: Center(
-                            child: Text("15",
-                                style: AppText.headline6
-                                    .copyWith(color: AppColors.whiteColor)
-                            )
-                        ),
-                      ),
-                      const Text("19:03"),
-                    ]),
+
+
               ],
             ),
         ),

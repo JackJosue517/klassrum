@@ -15,6 +15,7 @@ class AppColors {
   static const Color transparentColor = Colors.transparent;
 
   static const Color blackColor = Color.fromARGB(0, 0, 0, 0);
+
 }
 
 class AppText {

@@ -8,101 +8,99 @@ class UpComingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.whiteColor,
-      child: ListView.builder(
-          itemCount: 15,
-          /*itemBuilder: (context, index) => ListTile(
-                onTap: () {
-                  Navigator.of(context).pushNamed("/course-details");
-                },
-                leading: CircleAvatar(
-                    child: CachedNetworkImage(
-                  imageUrl:
-                      "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                  placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                )),
-                isThreeLine: true,
-                title: const Text(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Container(
+        color: AppColors.whiteColor,
+        child: ListView.builder(
+            itemCount: 15,
+            /*itemBuilder: (context, index) => ListTile(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("/course-details");
+                  },
+                  leading: CircleAvatar(
+                      child: CachedNetworkImage(
+                    imageUrl:
+                        "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
+                    placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                  )),
+                  isThreeLine: true,
+                  title: const Text(
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
+                  subtitle: const Text(
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
-                    "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
-                subtitle: const Text(
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  "Commentaires et Notes sur la session",
-                ),
-                trailing: const Text("Dans 02 jours"),
-              ),*/
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed("/course-details");
-            },
-            child: Row(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                    child: CachedNetworkImage(
-                      imageUrl:
-                      "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                      placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
-                    )
-                ),
-                const Gap(16),
-                Expanded(
-                  child:  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                          style:
-                          TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"
-                      ),
-                      const Gap(4),
-                      Text(
-                        style:
-                        TextStyle(
-                          fontSize: 13,
-                          color: Colors.grey[700],
-                        ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        "Commentaires et Notes sur la session",
-                      ),
-                    ],
+                    "Commentaires et Notes sur la session",
                   ),
-                ),
-                const Gap(8),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.all(4),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: AppColors.primaryColor,
+                  trailing: const Text("Dans 02 jours"),
+                ),*/
+          itemBuilder: (context, index) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: GestureDetector(
+              onTap: () {
+                Navigator.of(context).pushNamed("/course-details");
+              },
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleAvatar(
+                      child: CachedNetworkImage(
+                        imageUrl:
+                        "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
+                        placeholder: (context, url) =>
+                        const CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => const Icon(Icons.error),
+                      )
+                  ),
+                  const Gap(16),
+                  Expanded(
+                    child:  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                            style:
+                            TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"
                         ),
-                        child: Center(
-                            child: Text("15",
-                                style: AppText.headline6
-                                    .copyWith(color: AppColors.whiteColor)
-                            )
+                        const Gap(4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                style:
+                                TextStyle(
+                                  fontSize: 13,
+                                  color: Colors.grey[700],
+                                ),
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                "Commentaires et Notes sur la session",
+                              ),
+                            ),
+                            const Gap(8),
+                            Text("Dans 02 jours",
+                              style:
+                              TextStyle(
+                                fontSize: 8,
+                                color: Colors.grey[700],
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                      const Text("19:03"),
-                    ]),
-              ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
