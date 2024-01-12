@@ -11,129 +11,78 @@ class ResourcePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-        color: AppColors.whiteColor,
-        child: ListView.builder(
+          color: AppColors.whiteColor,
+          child: ListView.builder(
             itemCount: 15,
-            /*itemBuilder: (context, index) => ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/course-details");
-                  },
-                  leading: CircleAvatar(
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(
+                children: [
+                  CircleAvatar(
                       child: CachedNetworkImage(
                     imageUrl:
                         "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   )),
-                  isThreeLine: true,
-                  title: const Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
-                  subtitle: const Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "CARNET_DE_BORD.pdf"),
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                    Container(
-                      width: 20,
-                      height: 20,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.primaryColor,
-                      ),
-                      child: Center(
-                          child: Text("016",
-                              style: AppText.headline6
-                                  .copyWith(color: AppColors.whiteColor))),
-                    ),
-                    const Text("19:03"),
-                  ]),
-                )*/
-
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: Row(
-              //crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                    child: CachedNetworkImage(
-                      imageUrl:
-                      "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                      placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
-                    )
-                ),
-                const Gap(16),
-                 Expanded(
-                  child:  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          const Expanded(
-                            child: Text(
-                                style:
-                                TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"
+                  const Gap(16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const Expanded(
+                              child: Text(
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
                             ),
-                          ),
-                          const Gap(8),
-                          Container(
-                            padding: const EdgeInsets.all(4),
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: AppColors.primaryColor,
+                            const Gap(8),
+                            Container(
+                              padding: const EdgeInsets.all(4),
+                              decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: AppColors.primaryColor,
+                              ),
+                              child: Center(
+                                  child: Text("15",
+                                      style: AppText.headline6.copyWith(
+                                          color: AppColors.whiteColor))),
                             ),
-                            child: Center(
-                                child: Text("15",
-                                    style: AppText.headline6
-                                        .copyWith(color: AppColors.whiteColor)
-                                )
-                            ),
-                          ),
-                        ],
-                      ),
-                      const Gap(4),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text(
-                              style:
-                                TextStyle(
+                          ],
+                        ),
+                        const Gap(4),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                style: TextStyle(
                                   fontSize: 13,
                                   color: Colors.grey[700],
                                 ),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              "CARNET_DE_BORD.pdf jhe,gj hk oezfnhkjleza:;,nfyc_èç",
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                "CARNET_DE_BORD.pdf jhe,gj hk oezfnhkjleza:;,nfyc_èç",
+                              ),
                             ),
-                          ),
-                          const Gap(8),
-                          const Text("12:45"),
-                        ],
-
-                      ),
-
-                    ],
+                            const Gap(8),
+                            const Text("12:45"),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-
-
-              ],
+                ],
+              ),
             ),
-        ),
-      )
-      ),
+          )),
     );
   }
 }

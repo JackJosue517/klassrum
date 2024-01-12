@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppColors {
-  static const Color primaryColor = Color.fromARGB(255, 11, 102, 208);
+  static const Color primaryColor = Color(0xFF0B66D0);
 
   static const Color whiteColor = Color(0xFFFAFFF7);
 
@@ -15,7 +15,6 @@ class AppColors {
   static const Color transparentColor = Colors.transparent;
 
   static const Color blackColor = Color.fromARGB(0, 0, 0, 0);
-
 }
 
 class AppText {

@@ -1,6 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:klassrum/ui/screens/login_screen.dart';
+import 'package:klassrum/ui/screens/on_board.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,9 +8,8 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      splash:
-          "assets/img/logo.jpg",
-      nextScreen: const LoginScreen(),
+      splash: "assets/img/logo.jpg",
+      nextScreen: const OnBoardingScreen(),
       splashIconSize: 250,
       splashTransition: SplashTransition.fadeTransition,
     );

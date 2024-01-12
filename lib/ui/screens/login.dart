@@ -4,32 +4,32 @@ import 'package:gap/gap.dart';
 import 'package:klassrum/ui/components/default_button.dart';
 import 'package:klassrum/ui/components/default_textfield.dart';
 
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final passwordFieldController =TextEditingController();
+    final passwordFieldController = TextEditingController();
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24).copyWith(
-            top: MediaQuery.of(context).padding.top
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 24)
+              .copyWith(top: MediaQuery.of(context).padding.top),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-               Center(
-                child:  Column(
+              Center(
+                child: Column(
                   children: [
-                    Gap(48),
-                    SvgPicture.asset("assets/svg/undraw_authentication_re_svpt.svg",
-                    height: 150,),
+                    const Gap(48),
+                    SvgPicture.asset(
+                      "assets/svg/login-amigo.svg",
+                      height: 150,
+                    ),
                     const Gap(24),
                     const Text(
-                      'Connectez-vous ici!',
+                      'Connexion à Klassrum',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Color(0xFF1F41BB),
@@ -41,7 +41,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     const Gap(26),
                     const Text(
-                      'Bienvenu(e) sur Klassroom...',
+                      'Connectez-vous à votre compte Klassrum pour accéder à toutes les fonctionnalités.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
@@ -60,27 +60,25 @@ class LoginScreen extends StatelessWidget {
                   //champs d'identifiant
 
                   DefaultTextField(
-                    labelText: "Identifiant",
-                      fieldController: passwordFieldController
-                  ),
-        
+                      labelText: "Identifiant",
+                      fieldController: passwordFieldController),
+
                   const Gap(24),
-        //champs de password
-                 DefaultTextField(
-                   isPasswordField: true,
-                     labelText: "Password",
-                     fieldController: passwordFieldController),
-        
+                  //champs de password
+                  DefaultTextField(
+                      isPasswordField: true,
+                      labelText: "Password",
+                      fieldController: passwordFieldController),
+
                   const Gap(40),
-        
+
                   DefaultButton(
                     btnText: "Se connecter",
-                    btnFunction: () => Navigator.of(context).pushReplacementNamed('/home'),
+                    btnFunction: () =>
+                        Navigator.of(context).pushReplacementNamed('/home'),
                   )
-        
                 ],
               ),
-        
             ],
           ),
         ),
