@@ -25,9 +25,11 @@ class _CallRoomScreenState extends State<CallRoomScreen> {
   void initRenderers() async {
     await _localVideoRenderer.initialize();
     await _remoteVideoRenderer.initialize();
+
+    _localStream = await _getUserMedia();
   }
 
-  dynamic _getUserMedia() async {
+  Future<MediaStream> _getUserMedia() async {
     final Map<String, dynamic> mediaConstraints = {
       'audio': true,
       'video': {
@@ -124,10 +126,9 @@ class _CallRoomScreenState extends State<CallRoomScreen> {
   }
 
   @override
-  void initState() {
+  void initState(){
     super.initState();
     initRenderers();
-    _localStream = _getUserMedia();
   }
 
   @override
