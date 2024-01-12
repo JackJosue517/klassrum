@@ -13,31 +13,7 @@ class UpComingPage extends StatelessWidget {
       child: Container(
         color: AppColors.whiteColor,
         child: ListView.builder(
-            itemCount: 15,
-            /*itemBuilder: (context, index) => ListTile(
-                  onTap: () {
-                    Navigator.of(context).pushNamed("/course-details");
-                  },
-                  leading: CircleAvatar(
-                      child: CachedNetworkImage(
-                    imageUrl:
-                        "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                  )),
-                  isThreeLine: true,
-                  title: const Text(
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
-                  subtitle: const Text(
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    "Commentaires et Notes sur la session",
-                  ),
-                  trailing: const Text("Dans 02 jours"),
-                ),*/
+          itemCount: 15,
           itemBuilder: (context, index) => Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: GestureDetector(
