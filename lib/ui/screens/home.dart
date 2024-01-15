@@ -7,7 +7,6 @@ import 'package:line_icons/line_icons.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -25,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                 tooltip: 'Notifications',
               ),
               PopupMenuButton<int>(
-                //onSelected: (item) =>  onSelected(),
+                onSelected: (item) => Navigator.of(context).pushNamed("/setting"),
                 itemBuilder: (context) => [
                   const PopupMenuItem<int>(
                     value: 0,

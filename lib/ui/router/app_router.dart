@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:klassrum/ui/screens/call_room.dart';
 import 'package:klassrum/ui/screens/course_details.dart';
 import 'package:klassrum/ui/screens/home.dart';
+import 'package:klassrum/ui/screens/setting_screen.dart';
 import 'package:klassrum/ui/screens/splash.dart';
 import 'package:klassrum/ui/screens/unknown.dart';
 
@@ -16,6 +17,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());
       case '/call-room':
         return MaterialPageRoute(builder: (_) => const CallRoomScreen());
+      case '/setting':
+        return MaterialPageRoute(builder: (_) => const SettingScreen());
       default:
         return MaterialPageRoute(builder: (_) => const UnknownScreen());
     }

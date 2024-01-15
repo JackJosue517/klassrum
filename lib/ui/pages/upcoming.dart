@@ -67,7 +67,7 @@ class UpComingPage extends StatelessWidget {
                               style:
                               TextStyle(
                                 fontSize: 8,
-                                color: Colors.grey[700],
+                                color: AppColors.primaryColor,
                               ),
                             ),
                           ],
