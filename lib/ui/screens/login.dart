@@ -24,7 +24,7 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     const Gap(48),
                     SvgPicture.asset(
-                      "assets/svg/login-amigo.svg",
+                      "assets/svg/login-amico.svg",
                       height: 150,
                     ),
                     const Gap(24),
