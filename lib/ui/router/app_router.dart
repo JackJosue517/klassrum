@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:klassrum/ui/screens/call_room.dart';
 import 'package:klassrum/ui/screens/course_details.dart';
 import 'package:klassrum/ui/screens/home.dart';
+import 'package:klassrum/ui/screens/login.dart';
 import 'package:klassrum/ui/screens/setting_screen.dart';
 import 'package:klassrum/ui/screens/splash.dart';
 import 'package:klassrum/ui/screens/unknown.dart';
@@ -11,7 +12,11 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(builder: (_) => const SplashScreen());
+      case '/login':
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       case '/home':
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case '/notifications':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case '/course-details':
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());

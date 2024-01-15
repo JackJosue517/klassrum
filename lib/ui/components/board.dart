@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:klassrum/ui/configs/styles.dart';
 
 class OnBoardWidget extends StatefulWidget {
   final String src;
@@ -20,25 +21,29 @@ class _OnBoardWidgetState extends State<OnBoardWidget> {
   @override
   Widget build(BuildContext context) {
     return Stack(
-      children: [
+      children: <Widget>[
+        const SizedBox(
+          height: 20,
+        ),
         SvgPicture.asset(
           widget.src.toString(),
-          width: double.infinity,
-          height: double.infinity,
         ),
         Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(widget.title.toString()),
+              Text(
+                widget.title.toString(),
+                style: AppText.headline3,
+              ),
               const SizedBox(
                 height: 20,
               ),
               Text(widget.description.toString()),
               const SizedBox(
-                height: 20,
+                height: 125.0,
               ),
             ],
           ),

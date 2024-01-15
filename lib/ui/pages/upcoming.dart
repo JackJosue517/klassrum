@@ -63,7 +63,7 @@ class UpComingPage extends StatelessWidget {
                               ),
                             ),
                             const Gap(8),
-                            Text("Dans 02 jours",
+                            const Text("Dans 02 jours",
                               style:
                               TextStyle(
                                 fontSize: 8,

@@ -79,7 +79,7 @@ class _CallRoomScreenState extends State<CallRoomScreen> {
     };
 
     pc.onAddStream = (stream) {
-      print('AddStream: ' + stream.id);
+      print('AddStream: ${stream.id}');
       _remoteVideoRenderer.srcObject = stream;
     };
 
@@ -142,7 +142,7 @@ class _CallRoomScreenState extends State<CallRoomScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Session de cours'),
+          title: const Text('Session de cours'),
         ),
         body: Column(
           children: [

@@ -6,6 +6,7 @@ class AppTheme {
   static ThemeData buildTheme() {
     var baseTheme = ThemeData.light(useMaterial3: true).copyWith(
       appBarTheme: AppTheme._buildBarTheme(),
+      floatingActionButtonTheme: AppTheme._buildFloatingActionButtonThemeData(),
       colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
     );
 
@@ -19,6 +20,14 @@ class AppTheme {
       backgroundColor: AppColors.primaryColor,
       foregroundColor: AppColors.whiteColor,
       elevation: 0.0,
+    );
+  }
+
+  static FloatingActionButtonThemeData _buildFloatingActionButtonThemeData() {
+    return const FloatingActionButtonThemeData(
+      elevation: 0.0,
+      backgroundColor: AppColors.primaryColor,
+      foregroundColor: AppColors.whiteColor,
     );
   }
 }

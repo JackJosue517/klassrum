@@ -16,7 +16,9 @@ class HomeScreen extends StatelessWidget {
             title: const Text("Klassrum"),
             actions: <Widget>[
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/notifications');
+                },
                 icon: const Icon(
                   LineIcons.bellAlt,
                   size: 25,
@@ -24,7 +26,8 @@ class HomeScreen extends StatelessWidget {
                 tooltip: 'Notifications',
               ),
               PopupMenuButton<int>(
-                onSelected: (item) => Navigator.of(context).pushNamed("/setting"),
+                onSelected: (item) =>
+                    Navigator.of(context).pushNamed("/setting"),
                 itemBuilder: (context) => [
                   const PopupMenuItem<int>(
                     value: 0,
@@ -45,8 +48,7 @@ class HomeScreen extends StatelessWidget {
                 dividerColor: AppColors.primaryColor,
                 tabs: <Tab>[
                   Tab(
-                    child: Row(
-                    mainAxisSize: MainAxisSize.min, children: [
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
                       Text('A venir'),
                     ]),
                   ),
@@ -56,10 +58,9 @@ class HomeScreen extends StatelessWidget {
                     ]),
                   ),
                   Tab(
-                    child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Text('Historique'),
-                    ])
-                  ),
+                      child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Text('Historique'),
+                  ])),
                 ]),
           ),
           body: const TabBarView(children: [
