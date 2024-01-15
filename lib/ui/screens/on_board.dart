@@ -49,7 +49,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 title:
                     "Recevez des notifications en temps réel, Economisez \n vos données mobiles",
                 description:
-                    "Recevez des alertes instantanées. Profitez d'une expérience fluide et pratique \nen recevant des mises à jour en temps réel tout en préservant \nvos données mobiles.",
+                    "Recevez des alertes instantanées. \nProfitez d'une expérience fluide et pratique en recevant \ndes mises à jour en temps réel tout en préservant \nvos données mobiles.",
               ),
             ],
           ),
@@ -70,7 +70,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       : FloatingActionButton(
                           heroTag: 'left',
                           onPressed: () {
-                            _index++;
+                            _index--;
                             _controller.jumpToPage(_index);
                             setState(() {});
                           },

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:klassrum/ui/components/default_button.dart';
-import 'package:klassrum/ui/components/default_textfield.dart';
+import 'package:klassrum/ui/components/button.dart';
+import 'package:klassrum/ui/components/textfield.dart';
+import 'package:klassrum/ui/configs/styles.dart';
+import 'package:line_icons/line_icons.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -11,9 +13,10 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final passwordFieldController = TextEditingController();
     return Scaffold(
+      backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24)
+          padding: const EdgeInsets.symmetric(horizontal: 10)
               .copyWith(top: MediaQuery.of(context).padding.top),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,31 +28,19 @@ class LoginScreen extends StatelessWidget {
                     const Gap(48),
                     SvgPicture.asset(
                       "assets/svg/login-amico.svg",
-                      height: 150,
+                      height: 250,
                     ),
                     const Gap(24),
-                    const Text(
-                      'Connexion à Klassrum',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Color(0xFF1F41BB),
-                        fontSize: 30,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w700,
-                        height: 0,
-                      ),
-                    ),
-                    const Gap(26),
-                    const Text(
+                    Text('Connexion à Klassrum',
+                        textAlign: TextAlign.center,
+                        style: AppText.headline2.copyWith(
+                          color: AppColors.primaryColor,
+                        )),
+                    const Gap(8),
+                    Text(
                       'Connectez-vous à votre compte Klassrum pour accéder à toutes les fonctionnalités.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontFamily: 'Poppins',
-                        fontWeight: FontWeight.w600,
-                        height: 0,
-                      ),
+                      style: AppText.headline5,
                     ),
                   ],
                 ),
@@ -59,20 +50,18 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   //champs d'identifiant
 
-                  DefaultTextField(
-                      labelText: "Identifiant",
+                  AppTextField(
+                      icon: LineIcons.userAlt,
+                      labelText: "Nom d'utilisateur",
                       fieldController: passwordFieldController),
-
                   const Gap(24),
-                  //champs de password
-                  DefaultTextField(
+                  AppTextField(
+                      icon: LineIcons.key,
                       isPasswordField: true,
-                      labelText: "Password",
+                      labelText: "Mot de passe",
                       fieldController: passwordFieldController),
-
                   const Gap(40),
-
-                  DefaultButton(
+                  AppButton(
                     btnText: "Se connecter",
                     btnFunction: () =>
                         Navigator.of(context).pushReplacementNamed('/home'),

@@ -3,6 +3,7 @@ import 'package:klassrum/ui/screens/call_room.dart';
 import 'package:klassrum/ui/screens/course_details.dart';
 import 'package:klassrum/ui/screens/home.dart';
 import 'package:klassrum/ui/screens/login.dart';
+import 'package:klassrum/ui/screens/notification.dart';
 import 'package:klassrum/ui/screens/setting_screen.dart';
 import 'package:klassrum/ui/screens/splash.dart';
 import 'package:klassrum/ui/screens/unknown.dart';
@@ -17,7 +18,7 @@ class AppRouter {
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case '/notifications':
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());
       case '/course-details':
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());
       case '/call-room':
