@@ -12,8 +12,7 @@ class CourseDetailsScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: Column(
-              children: [
+          child: Column(children: [
             Container(
               padding: const EdgeInsets.all(16),
               height: 200,
@@ -33,9 +32,12 @@ class CourseDetailsScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       color: Colors.grey.shade800,
                     ),
-                    child: const Icon(
-                      Icons.arrow_back,
-                      color: AppColors.whiteColor,
+                    child: InkWell(
+                      onTap: () => Navigator.pop(context),
+                      child: const Icon(
+                        Icons.arrow_back,
+                        color: AppColors.whiteColor,
+                      ),
                     ),
                   )
                 ],
@@ -78,7 +80,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         ),
                         Gap(8),
                         Text(
-                          "Debut : 12H - Fin : 14H",
+                          "Lundi, 17 Juin -  12H à 14H",
                           style: TextStyle(
                               fontWeight: FontWeight.w500, fontSize: 18),
                         ),
@@ -99,7 +101,7 @@ class CourseDetailsScreen extends StatelessWidget {
                     child: FilledButton.tonalIcon(
                       style: const ButtonStyle(
                           backgroundColor:
-                          MaterialStatePropertyAll(AppColors.primaryColor)),
+                              MaterialStatePropertyAll(AppColors.primaryColor)),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/call-room');
                       },
@@ -121,7 +123,6 @@ class CourseDetailsScreen extends StatelessWidget {
           ]),
         ),
       ),
-
     );
   }
 }
