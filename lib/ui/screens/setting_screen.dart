@@ -26,14 +26,14 @@ class _SettingScreenState extends State<SettingScreen> {
         title: const Text("Setting"),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             Container(
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.grey[100],
+                //color: Colors.grey[100],
               ),
               child: Column(
                 children: [
@@ -54,7 +54,19 @@ class _SettingScreenState extends State<SettingScreen> {
                           const Icon(Icons.error),
                     ),
                   ),
-                  const Gap(12),
+                  const Gap(24),
+                  const Column(
+                    children: [
+                      Text("AYAH Yawavi Etsiam",
+                        style: TextStyle(fontSize: 17,
+                        fontWeight: FontWeight.bold),
+                      ),
+                      Gap(8),
+                      Text("Licence professionnelle en genie lociciel",
+                        style: TextStyle(fontSize: 15,
+                            fontWeight: FontWeight.w200),)
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -88,8 +100,8 @@ class _SettingScreenState extends State<SettingScreen> {
                 ],
               ),
             ),
+            const Gap(16),
             Container(
-              margin: const EdgeInsets.symmetric(vertical: 4),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.grey[100],
