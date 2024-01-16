@@ -21,7 +21,7 @@ class CourseDetailsScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 1),
                   image: const DecorationImage(
-                      image: AssetImage("assets/img/photoCours.jpg"),
+                      image: AssetImage("assets/img/course_banner.jpg"),
                       fit: BoxFit.fill)),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +65,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       "Les conceptes de l'orienté objet"),
                   const Gap(24),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
                     width: double.infinity,
                     height: 50,
                     decoration: BoxDecoration(

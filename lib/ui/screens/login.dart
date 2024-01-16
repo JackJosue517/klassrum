@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget {
                         )),
                     const Gap(8),
                     Text(
-                      'Connectez-vous à votre compte Klassrum pour accéder à toutes les fonctionnalités.',
+                      'Entrez vos données de connexion à la plateforme d\' inscription à l\' UL pour plus de fonctionnalité',
                       textAlign: TextAlign.center,
                       style: AppText.headline5,
                     ),
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
 
                   AppTextField(
                       icon: LineIcons.userAlt,
-                      labelText: "Nom d'utilisateur",
+                      labelText: "Identifiant",
                       fieldController: passwordFieldController),
                   const Gap(24),
                   AppTextField(

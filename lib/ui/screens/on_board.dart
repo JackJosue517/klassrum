@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:klassrum/ui/components/board.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:line_icons/line_icons.dart';
@@ -17,6 +18,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void initState() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     super.initState();
     _controller = PageController();
   }
@@ -94,7 +96,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             Navigator.pushReplacementNamed(context, '/login');
                           },
                           child: Text(
-                            'Finir',
+                            'Terminer',
                             style: AppText.headline6,
                           ))
                       : FloatingActionButton(
@@ -116,5 +118,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    super.dispose();
   }
 }

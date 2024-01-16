@@ -14,12 +14,12 @@ class UpComingPage extends StatelessWidget {
         color: AppColors.whiteColor,
         child: ListView.builder(
           itemCount: 15,
-          itemBuilder: (context, index) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.of(context).pushNamed("/course-details");
-              },
+          itemBuilder: (context, index) => GestureDetector(
+            onTap: () {
+              Navigator.of(context).pushNamed("/course-details");
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
