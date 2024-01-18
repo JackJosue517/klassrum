@@ -5,8 +5,15 @@ import 'package:klassrum/ui/pages/resources.dart';
 import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
