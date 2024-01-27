@@ -14,7 +14,6 @@ jobs:
         with:
           to: 5467979333
           token: 6478602495:AAGYsVz6FU7lISKSnFhfJFBirKp8ofIwgdM
-          document: lib/main.dart
           message: |
             ${{ github.actor }} created commit:
             Commit message: ${{ github.event.commits[0].message }}
@@ -22,3 +21,4 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          document: /home/runner/work/klassrum/klassrum/build/app/outputs/flutter-apk/app-x86_64-release.apk
