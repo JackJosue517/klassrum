@@ -23,4 +23,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: $GITHUB_WORKSPACE/build/app/outputs/flutter-apk/app-x86_64-release.apk
+          path: build/app/outputs/flutter-apk/*.apk
