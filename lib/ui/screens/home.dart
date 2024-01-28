@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton.outlined(
             onPressed: _seeNotifications,
             icon: const Icon(
-              LineIcons.notifications,
+              LineIcons.bell,
               size: 18.0,
               color: AppColors.darkColor,
             ),
