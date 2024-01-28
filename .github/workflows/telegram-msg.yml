@@ -21,4 +21,4 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: /home/runner/work/klassrum/klassrum/build/app/outputs/flutter-apk/app-x86_64-release.apk
+          document: build/app/outputs/flutter-apk/app-x86_64-release.apk
