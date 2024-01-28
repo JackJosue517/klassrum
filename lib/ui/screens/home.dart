@@ -45,22 +45,22 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton.outlined(
             onPressed: _seeNotifications,
             icon: const Icon(
-              LineIcons.bell,
+              LineIcons.notifications,
               size: 18.0,
-              color: AppColors.grayColor,
+              color: AppColors.darkColor,
             ),
           ),
         ],
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.darkColor,
+        color: AppColors.primaryColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: GNav(
             backgroundColor: AppColors.primaryColor,
             color: AppColors.trueWhiteColor,
-            activeColor: AppColors.trueWhiteColor,
+            activeColor: AppColors.primaryColor,
             tabBackgroundColor: AppColors.trueWhiteColor,
             padding: const EdgeInsets.all(16),
             gap: 9,
