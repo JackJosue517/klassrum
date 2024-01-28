@@ -54,14 +54,14 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.blackColor,
+        color: AppColors.darkColor,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
           child: GNav(
-            backgroundColor: AppColors.blackColor,
-            color: AppColors.whiteColor,
-            activeColor: AppColors.whiteColor,
-            tabBackgroundColor: AppColors.grayColor,
+            backgroundColor: AppColors.primaryColor,
+            color: AppColors.trueWhiteColor,
+            activeColor: AppColors.trueWhiteColor,
+            tabBackgroundColor: AppColors.trueWhiteColor,
             padding: const EdgeInsets.all(16),
             gap: 9,
             onTabChange: _updateViews,
