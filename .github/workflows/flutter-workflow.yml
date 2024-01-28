@@ -27,6 +27,19 @@ jobs:
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
+          to: 5469084643
+          token: 6478602495:AAGYsVz6FU7lISKSnFhfJFBirKp8ofIwgdM
+          message: |
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            
+            Repository: ${{ github.repository }}
+            
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          document: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+      - name: send telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
           to: 5467979333
           token: 6478602495:AAGYsVz6FU7lISKSnFhfJFBirKp8ofIwgdM
           message: |
