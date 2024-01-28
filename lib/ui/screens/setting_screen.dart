@@ -23,7 +23,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Setting"),
+        title: const Text("Paramètres"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -33,7 +33,6 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.symmetric(vertical: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                //color: Colors.grey[100],
               ),
               child: Column(
                 children: [

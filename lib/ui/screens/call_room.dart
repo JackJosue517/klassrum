@@ -6,7 +6,6 @@ import 'package:sdp_transform/sdp_transform.dart';
 
 class CallRoomScreen extends StatefulWidget {
   const CallRoomScreen({Key? key, required this.title}) : super(key: key);
-
   final String title;
 
   @override

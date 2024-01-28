@@ -39,15 +39,16 @@ dependencies:
   flutter_webrtc: ^0.9.47
   gap: ^3.0.1
   google_fonts: ^6.1.0
+  google_nav_bar: ^5.0.6
   line_icons: ^2.0.3
   sdp_transform: ^0.3.2
   smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.13.1
 
 flutter_launcher_icons:
   android: "launcher_icon"
@@ -72,7 +73,6 @@ flutter:
   assets:
     - assets/svg/
     - assets/img/
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
