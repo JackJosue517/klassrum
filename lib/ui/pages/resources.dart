@@ -125,7 +125,7 @@ class _ResourcePageState extends State<ResourcePage> {
             height: 12.0,
           ),
           Text('Collections', style: AppText.headline5),
-          SingleChildScrollView(
+          const SingleChildScrollView(
               child: Row(children: [
             Card(
                 child: ListTile(
@@ -140,7 +140,7 @@ class _ResourcePageState extends State<ResourcePage> {
                   title: Text('Canaux des UEs'),
                   trailing: Icon(LineIcons.angleRight)
                 ),
-            ),
+            )
           ])),
         ])));
   }

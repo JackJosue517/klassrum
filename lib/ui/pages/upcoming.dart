@@ -10,29 +10,27 @@ class UpComingPage extends StatefulWidget {
 }
 
 class _UpComingPageState extends State<UpComingPage> {
-  DateTime today = DatTime.now();
+  DateTime today = DateTime.now();
 
-  void _onDaySelected(DateTime day, DateTime focusedDay){
-    setState((){
+  void _onDaySelected(DateTime day, DateTime focusedDay) {
+    setState(() {
       today = day;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TableCalendar(
-          locale: 'fr_FR',
-          rowHeight: 43,
-          selectedDayPredicate: (day) => isSameDay(day, today),
-          availableGestures: AvailableGestures.all,
-          firstDay: DateTime.utc(2020, 10, 16),
-          lastDay: DateTime.utc(2030, 3, 14),
-          focusedDay: today,
-          onDaySelected: _onDaySelected,
-        )
-      ]
-    )
+    return Column(children: [
+      TableCalendar(
+        locale: 'fr_FR',
+        rowHeight: 43,
+        selectedDayPredicate: (day) => isSameDay(day, today),
+        availableGestures: AvailableGestures.all,
+        firstDay: DateTime.utc(2020, 10, 16),
+        lastDay: DateTime.utc(2030, 3, 14),
+        focusedDay: today,
+        onDaySelected: _onDaySelected,
+      )
+    ]);
   }
 }
