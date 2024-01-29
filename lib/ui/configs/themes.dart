@@ -17,7 +17,7 @@ class AppTheme {
 
   static AppBarTheme _buildBarTheme() {
     return const AppBarTheme(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.trueWhiteColor,
       foregroundColor: AppColors.darkColor,
       centerTitle: true,
       elevation: 0.0,

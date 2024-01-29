@@ -46,12 +46,14 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: _seeSettings,
-          child: CircleAvatar(
-              child: CachedNetworkImage(
-            imageUrl: "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-            //placeholder: (context, url) => const CircularProgressIndicator(),
-            //errorWidget: (context, url, error) => const Icon(Icons.error),
-          )),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+                child: CachedNetworkImage(
+              imageUrl:
+                  "https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg",
+            )),
+          ),
         ),
         actions: [
           _selectedIndex == 1
@@ -59,38 +61,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: _seeSearchPage,
                   child: const Icon(
                     LineIcons.search,
-                    size: 22.0,
-                    color: AppColors.darkColor,
+                    size: 24.0,
+                    color: AppColors.greyColor,
                   ),
                 )
               : const Text(''),
+          const SizedBox(width: 20),
           GestureDetector(
             onTap: _seeNotifications,
             child: const Icon(
               LineIcons.bellAlt,
-              size: 22.0,
-              color: AppColors.darkColor,
+              size: 24.0,
+              color: AppColors.greyColor,
             ),
           ),
+          const SizedBox(width: 20)
         ],
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.whiteColor,
+        color: AppColors.primaryColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
           child: GNav(
-            backgroundColor: AppColors.whiteColor,
-            color: AppColors.trueWhiteColor,
-            activeColor: AppColors.whiteColor,
-            tabBackgroundColor: AppColors.trueWhiteColor,
-            padding: const EdgeInsets.all(5.0),
-            gap: 9,
+            rippleColor: const Color.fromRGBO(66, 66, 66, 1),
+            hoverColor: const Color.fromRGBO(97, 97, 97, 1),
+            haptic: true,
+            tabBorderRadius: 15,
+            tabActiveBorder: Border.all(color: Colors.black, width: 1),
+            tabBorder: Border.all(color: Colors.grey, width: 1),
+            tabShadow: [
+              BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)
+            ],
+            curve: Curves.easeOutExpo,
+            duration: const Duration(milliseconds: 900),
+            gap: 8,
+            color: Colors.grey[800],
+            activeColor: AppColors.primaryColor,
+            iconSize: 24,
+            tabBackgroundColor: AppColors.primaryColor.withOpacity(0.1),
+            padding:
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
             onTabChange: _updateViews,
             tabs: const <GButton>[
               GButton(icon: Icons.watch_later_outlined, text: 'À venir'),
-              GButton(icon: Icons.folder, text: 'Ressources'),
-              GButton(icon: Icons.history_edu_outlined, text: 'Historique'),
+              GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
+              GButton(icon: LineIcons.history, text: 'Historique'),
             ],
           ),
         ),

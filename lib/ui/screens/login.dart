@@ -5,9 +5,21 @@ import 'package:klassrum/ui/components/button.dart';
 import 'package:klassrum/ui/components/textfield.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:flutter/services.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+  }
 
   @override
   Widget build(BuildContext context) {

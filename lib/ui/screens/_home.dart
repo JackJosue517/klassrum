@@ -51,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 indicatorWeight: 3.0,
                 indicatorColor: AppColors.whiteColor,
                 labelColor: AppColors.whiteColor,
-                unselectedLabelColor: AppColors.grayColor,
+                unselectedLabelColor: AppColors.greyColor,
                 dividerColor: AppColors.primaryColor,
                 tabs: <Tab>[
                   Tab(
