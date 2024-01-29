@@ -93,20 +93,21 @@ class _HomeScreenState extends State<HomeScreen> {
             tabActiveBorder: Border.all(color: Colors.black, width: 1),
             tabBorder: Border.all(color: Colors.grey, width: 1),
             tabShadow: [
-              BoxShadow(color: Colors.grey.withOpacity(0.5), blurRadius: 8)
+              BoxShadow(
+                  color: AppColors.whiteColor.withOpacity(0.5), blurRadius: 8)
             ],
             curve: Curves.easeOutExpo,
             duration: const Duration(milliseconds: 900),
             gap: 8,
             color: Colors.grey[800],
-            activeColor: AppColors.primaryColor,
+            activeColor: AppColors.trueWhiteColor,
             iconSize: 24,
-            tabBackgroundColor: AppColors.primaryColor.withOpacity(0.1),
+            tabBackgroundColor: AppColors.primaryColor.withOpacity(0.9),
             padding:
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
             onTabChange: _updateViews,
             tabs: const <GButton>[
-              GButton(icon: LineIcons.wix, text: 'À venir'),
+              GButton(icon: LineIcons.amilia, text: 'À venir'),
               GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
               GButton(icon: LineIcons.history, text: 'Historique'),
             ],

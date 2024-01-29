@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:klassrum/ui/configs/styles.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ResourcePage extends StatelessWidget {
   const ResourcePage({super.key});
@@ -10,7 +11,6 @@ class ResourcePage extends StatelessWidget {
       padding: const EdgeInsets.all(14.0),
       child: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
@@ -45,9 +45,38 @@ class ResourcePage extends StatelessWidget {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(width: 30, height: 30, color: Colors.yellow),
                         Container(
-                            width: 30, height: 30, color: Colors.yellowAccent),
+                          width: 30,
+                          height: 30,
+                          color: Colors.white70,
+                          child: Row(
+                            children: [
+                              const Icon(LineIcons.imageFileAlt),
+                              Column(children: [
+                                Text('Images', style: AppText.headline5),
+                                Text('10 fichiers',
+                                    style: AppText.headline6
+                                        .copyWith(color: AppColors.greyColor)),
+                              ])
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: 30,
+                          height: 30,
+                          color: Colors.white70,
+                          child: Row(
+                            children: [
+                              const Icon(LineIcons.videoFileAlt),
+                              Column(children: [
+                                Text('Vidéos', style: AppText.headline5),
+                                Text('9 fichiers',
+                                    style: AppText.headline6
+                                        .copyWith(color: AppColors.greyColor)),
+                              ])
+                            ],
+                          ),
+                        ),
                       ]),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
