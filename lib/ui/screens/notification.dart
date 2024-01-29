@@ -45,17 +45,31 @@ class _NotificationScreenState extends State<NotificationScreen> {
               itemCount: notificationsList.length,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
-                itemBuilder: (context, index) => const NotificationCard(
-                    title: 'Nouvelle session de cours',
-                    subtitle: 'Vous avez prochainement cours avec M. HOETOWOU',
-                    icon: LineIcons.bell,
-                    iconColor: AppColors.primaryColor))
+                itemBuilder: (context, index) => Slidable(
+                  endActionPane: ActionPane(
+                    motion: ScrollMotion(),
+                    children: [
+                      SlidableAction(
+                        label: 'Supprimer',
+                        icon: Icons.trash,
+                        foregroundColor: Colors.white,
+                        backgroundColor: AppColors.redColor,
+                        onPressed: _deleteNotification(index),
+                      )
+                    ]
+                  )
+                  child: NotificationCard(
+                      title: 'Nouvelle session de cours',
+                      subtitle: 'Vous avez prochainement cours avec M. HOETOWOU',
+                      icon: LineIcons.bell,
+                      iconColor: AppColors.primaryColor),
+                ))
             : Center(
                 child: Column(
                 children: [
                   SvgPicture.asset('assets/svg/board01.svg'),
                   const SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   const Text('Vous êtes à jour...'),
                 ],

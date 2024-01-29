@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:klassrum/ui/pages/history.dart';
@@ -36,7 +37,16 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _seeSearchPage() {
-    Navigator.of(context).pushNamed('/search');
+    showSearch(
+      context: context,
+      delegate: AppSearchDelegate(),
+    );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   }
 
   @override
@@ -45,12 +55,12 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: _seeSettings,
-          child: const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              radius: 50.0,
-              backgroundImage:
-                  NetworkImage('dlsbeta.000webhostapp.com/assets/dls-icon.png'),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: 55.0,
+              height: 55.0,
+              child: Image.asset('assets/img/logo.jpg'),
             ),
           ),
         ),
@@ -83,13 +93,13 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const Divider(
-            color: Colors.grey,
+            color: Color.fromRGBO(189, 189, 189, 1),
           ),
           Container(
             color: AppColors.trueWhiteColor,
             child: Padding(
               padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
               child: GNav(
                 onTabChange: _updateViews,
                 backgroundColor: AppColors.trueWhiteColor,
@@ -109,5 +119,84 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+}
+
+class AppSearchDelegate extends SearchDelegate {
+  List<String> searchTerms = [
+    'Apple',
+    'Banana',
+    'Pear',
+    'Watermelons',
+    'Oranges',
+    'Blueberries',
+    'Strawberries',
+    'Raspberries'
+  ];
+
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: const Icon(Icons.clear),
+        onPressed: () {
+          if (query.isEmpty) {
+            close(context, null);
+          } else {
+            query = '';
+          }
+        },
+      )
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    return IconButton(
+      icon: const Icon(LineIcons.angleLeft),
+      onPressed: () => close(context, null),
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    List<String> matchQuery = [];
+    for (var word in searchTerms) {
+      if (word.toLowerCase().contains(query.toLowerCase())) {
+        matchQuery.add(word);
+      }
+    }
+
+    return ListView.builder(
+        itemCount: matchQuery.length,
+        itemBuilder: (context, index) {
+          var result = matchQuery[index];
+          return ListTile(
+            title: Text(result),
+          );
+        });
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    List<String> suggestions = [];
+    for (var word in searchTerms) {
+      if (word.toLowerCase().contains(query.toLowerCase())) {
+        suggestions.add(word);
+      }
+    }
+
+    return ListView.builder(
+        itemCount: suggestions.length,
+        itemBuilder: (context, index) {
+          var suggestion = suggestions[index];
+          return ListTile(
+            title: Text(suggestion),
+            onTap: () {
+              query = suggestion;
+              showResults(context);
+            },
+          );
+        });
   }
 }

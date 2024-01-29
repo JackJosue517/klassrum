@@ -19,6 +19,8 @@ class AppColors {
   static const Color grey200 = Color(0x00ffc0c0);
 
   static const Color blackColor = Color(0x01000000);
+
+  static const Color greenColor = Colors.green;
 }
 
 class AppText {

@@ -17,22 +17,24 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Icon(icon, color: iconColor),
-      const SizedBox(height: 16),
+    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Center(child: Icon(icon, color: iconColor)),
+      ),
       Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                style: AppText.headline4.copyWith(color: AppColors.darkColor),
+                style: AppText.headline5.copyWith(color: AppColors.darkColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 title),
             const SizedBox(height: 4),
             Expanded(
               child: Text(
-                style: AppText.headline5.copyWith(color: AppColors.darkColor),
+                style: AppText.headline6.copyWith(color: AppColors.greyColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 subtitle,
@@ -42,7 +44,10 @@ class NotificationCard extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 16),
-      Icon(LineIcons.dotCircleAlt, color: iconColor),
+      const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 8.0),
+        child: Icon(LineIcons.dotCircle, color: AppColors.greenColor),
+      ),
     ]);
   }
 }
