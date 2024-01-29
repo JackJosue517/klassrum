@@ -48,7 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
           child: const Padding(
             padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage('assets/img/logo.jpg'),
+              radius: 50.0,
+              backgroundImage:
+                  NetworkImage('dlsbeta.000webhostapp.com/assets/dls-icon.png'),
             ),
           ),
         ),
@@ -58,25 +60,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: _seeSearchPage,
                   child: const Icon(
                     LineIcons.search,
-                    size: 30.0,
+                    size: 32.0,
                     color: AppColors.greyColor,
                   ),
                 )
               : const Text(''),
-          const SizedBox(width: 20),
+          const SizedBox(width: 15),
           GestureDetector(
             onTap: _seeNotifications,
             child: const Icon(
               LineIcons.bellAlt,
-              size: 30.0,
+              size: 32.0,
               color: AppColors.greyColor,
             ),
           ),
-          const SizedBox(width: 20)
+          const SizedBox(width: 10)
         ],
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const Divider(
             color: Colors.grey,
