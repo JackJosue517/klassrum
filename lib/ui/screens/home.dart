@@ -67,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               : const Text(''),
           const SizedBox(width: 20),
+          const SizedBox(width: 20),
           GestureDetector(
             onTap: _seeNotifications,
             child: const Icon(
@@ -75,12 +76,13 @@ class _HomeScreenState extends State<HomeScreen> {
               color: AppColors.greyColor,
             ),
           ),
+          const SizedBox(width: 20),
           const SizedBox(width: 20)
         ],
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.primaryColor,
+        color: Colors.transparent,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
           child: GNav(
@@ -104,7 +106,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
             onTabChange: _updateViews,
             tabs: const <GButton>[
-              GButton(icon: Icons.watch_later_outlined, text: 'À venir'),
+              GButton(icon: LineIcons.wix, text: 'À venir'),
               GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
               GButton(icon: LineIcons.history, text: 'Historique'),
             ],
