@@ -47,17 +47,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     const SizedBox(height: 10),
                 itemBuilder: (context, index) => Slidable(
                   endActionPane: ActionPane(
-                    motion: ScrollMotion(),
+                    motion: const ScrollMotion(),
                     children: [
                       SlidableAction(
                         label: 'Supprimer',
-                        icon: Icons.trash,
+                        icon: Icons.delete,
                         foregroundColor: Colors.white,
                         backgroundColor: AppColors.redColor,
-                        onPressed: _deleteNotification(index),
+                        onPressed: () => _deleteNotification(index),
                       )
                     ]
-                  )
+                  ),
                   child: NotificationCard(
                       title: 'Nouvelle session de cours',
                       subtitle: 'Vous avez prochainement cours avec M. HOETOWOU',

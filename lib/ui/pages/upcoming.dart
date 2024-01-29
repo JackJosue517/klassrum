@@ -10,9 +10,7 @@ class UpComingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
-        color: AppColors.whiteColor,
-        child: ListView.builder(
+      child: ListView.builder(
           itemCount: 15,
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
@@ -80,7 +78,6 @@ class UpComingPage extends StatelessWidget {
             ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
