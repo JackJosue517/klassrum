@@ -26,7 +26,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());
       case '/call-room':
         return MaterialPageRoute(builder: (_) => const CallRoomScreen(title: 'Session de cours',));
-      case '/setting':
+      case '/settings':
         return MaterialPageRoute(builder: (_) => const SettingScreen());
       default:
         return MaterialPageRoute(builder: (_) => const UnknownScreen());

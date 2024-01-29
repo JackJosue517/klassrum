@@ -25,14 +25,14 @@ class NotificationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-                style: AppText.headline4,
+                style: AppText.headline4.copyWith(color: AppColors.darkColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 title),
             const SizedBox(height: 4),
             Expanded(
               child: Text(
-                style: AppText.headline5,
+                style: AppText.headline5.copyWith(color: AppColors.darkColor),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 subtitle,

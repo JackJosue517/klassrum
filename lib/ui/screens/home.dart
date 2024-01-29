@@ -59,30 +59,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: _seeSearchPage,
                   child: const Icon(
                     LineIcons.search,
-                    size: 22.0,
+                    size: 30.0,
                     color: AppColors.darkColor,
                   ),
                 )
               : const Text(''),
+          const SizedBox(width: 20),
           GestureDetector(
             onTap: _seeNotifications,
             child: const Icon(
               LineIcons.bellAlt,
-              size: 22.0,
+              size: 30.0,
               color: AppColors.darkColor,
             ),
           ),
+          const SizedBox(width: 20)
         ],
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.whiteColor,
+        color: AppColors.primaryColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
           child: GNav(
-            backgroundColor: AppColors.whiteColor,
+            backgroundColor: AppColors.primaryColor,
             color: AppColors.trueWhiteColor,
-            activeColor: AppColors.whiteColor,
+            activeColor: AppColors.primaryColor,
             tabBackgroundColor: AppColors.trueWhiteColor,
             padding: const EdgeInsets.all(5.0),
             gap: 9,
