@@ -26,11 +26,4 @@ class _SplashScreenState extends State<SplashScreen> {
       splashTransition: SplashTransition.fadeTransition,
     );
   }
-
-  @override
-  void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.top]);
-    super.dispose();
-  }
 }

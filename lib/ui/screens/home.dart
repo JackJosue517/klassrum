@@ -5,7 +5,6 @@ import 'package:klassrum/ui/pages/history.dart';
 import 'package:klassrum/ui/pages/resources.dart';
 import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -46,13 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         leading: GestureDetector(
           onTap: _seeSettings,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
             child: CircleAvatar(
-                child: CachedNetworkImage(
-              imageUrl:
-                  "https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg",
-            )),
+              backgroundImage: AssetImage('assets/img/logo.jpg'),
+            ),
           ),
         ),
         actions: [
@@ -61,58 +58,51 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: _seeSearchPage,
                   child: const Icon(
                     LineIcons.search,
-                    size: 24.0,
+                    size: 30.0,
                     color: AppColors.greyColor,
                   ),
                 )
               : const Text(''),
           const SizedBox(width: 20),
-          const SizedBox(width: 20),
           GestureDetector(
             onTap: _seeNotifications,
             child: const Icon(
               LineIcons.bellAlt,
-              size: 24.0,
+              size: 30.0,
               color: AppColors.greyColor,
             ),
           ),
-          const SizedBox(width: 20),
           const SizedBox(width: 20)
         ],
       ),
       body: viewItems[_selectedIndex],
-      bottomNavigationBar: Container(
-        color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
-          child: GNav(
-            rippleColor: const Color.fromRGBO(66, 66, 66, 1),
-            hoverColor: const Color.fromRGBO(97, 97, 97, 1),
-            haptic: true,
-            tabBorderRadius: 15,
-            tabActiveBorder: Border.all(color: Colors.black, width: 1),
-            tabBorder: Border.all(color: Colors.grey, width: 1),
-            tabShadow: [
-              BoxShadow(
-                  color: AppColors.whiteColor.withOpacity(0.5), blurRadius: 8)
-            ],
-            curve: Curves.easeOutExpo,
-            duration: const Duration(milliseconds: 900),
-            gap: 8,
-            color: Colors.grey[800],
-            activeColor: AppColors.trueWhiteColor,
-            iconSize: 24,
-            tabBackgroundColor: AppColors.primaryColor.withOpacity(0.9),
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-            onTabChange: _updateViews,
-            tabs: const <GButton>[
-              GButton(icon: LineIcons.amilia, text: 'À venir'),
-              GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
-              GButton(icon: LineIcons.history, text: 'Historique'),
-            ],
+      bottomNavigationBar: Column(
+        children: [
+          const Divider(
+            color: Colors.grey,
           ),
-        ),
+          Container(
+            color: AppColors.trueWhiteColor,
+            child: Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+              child: GNav(
+                onTabChange: _updateViews,
+                backgroundColor: AppColors.trueWhiteColor,
+                color: Colors.grey[800],
+                activeColor: AppColors.trueWhiteColor,
+                tabBackgroundColor: AppColors.primaryColor.withOpacity(0.9),
+                padding: const EdgeInsets.all(16),
+                gap: 8,
+                tabs: const <GButton>[
+                  GButton(icon: LineIcons.home, text: 'Cours'),
+                  GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
+                  GButton(icon: LineIcons.history, text: 'Historique'),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

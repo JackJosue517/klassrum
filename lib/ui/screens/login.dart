@@ -16,12 +16,6 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   @override
-  void initState() {
-    super.initState();
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
-  }
-
-  @override
   Widget build(BuildContext context) {
     final passwordFieldController = TextEditingController();
     return Scaffold(
@@ -85,5 +79,12 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
+    super.dispose();
   }
 }
