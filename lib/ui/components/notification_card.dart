@@ -17,7 +17,7 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+    return Card(child: ListTile(title: title, leading: Icon(icon, color: iconColor), subtitle: subtitle));/*Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: Center(child: Icon(icon, color: iconColor)),
@@ -48,6 +48,6 @@ class NotificationCard extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 8.0),
         child: Icon(LineIcons.dotCircle, color: AppColors.greenColor),
       ),
-    ]);
+    ])*/
   }
 }

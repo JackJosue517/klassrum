@@ -14,24 +14,7 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  final List<NotificationData> notificationsList = const [
-    NotificationData(
-      title: 'Nouvelle session de cours ajouté',
-      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
-    ),
-    NotificationData(
-      title: 'Nouvelle session de cours ajouté',
-      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
-    ),
-    NotificationData(
-      title: 'Nouvelle session de cours ajouté',
-      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
-    ),
-    NotificationData(
-      title: 'Nouvelle session de cours ajouté',
-      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
-    ),
-  ];
+  final List<NotificationData> notificationsList = const [];
 
   @override
   Widget build(BuildContext context) {
