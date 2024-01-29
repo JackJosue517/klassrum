@@ -11,106 +11,47 @@ class ResourcePage extends StatelessWidget {
       padding: const EdgeInsets.all(14.0),
       child: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              children: [
-                Text(
-                  'Récents',
-                  style: AppText.headline4,
-                ),
-                SingleChildScrollView(
-                  child: Row(children: [
-                    ListView.separated(
-                        itemCount: 9,
-                        separatorBuilder: (BuildContext context, int index) =>
-                            const SizedBox(width: 15),
-                        itemBuilder: (context, index) => Container(
-                              width: 90,
-                              height: 90,
-                              color: AppColors.primaryColor,
-                            ))
-                  ]),
-                )
-              ],
+            Text('Récents', style: AppText.headline5),
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                ]
+              )
             ),
-            const SizedBox(height: 20),
-            Column(
-              children: [
-                Text(
-                  'Catégories',
-                  style: AppText.headline4,
-                ),
-                Column(children: [
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          width: 30,
-                          height: 30,
-                          color: Colors.white70,
-                          child: Row(
-                            children: [
-                              const Icon(LineIcons.imageFileAlt),
-                              Column(children: [
-                                Text('Images', style: AppText.headline5),
-                                Text('10 fichiers',
-                                    style: AppText.headline6
-                                        .copyWith(color: AppColors.greyColor)),
-                              ])
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: 30,
-                          height: 30,
-                          color: Colors.white70,
-                          child: Row(
-                            children: [
-                              const Icon(LineIcons.videoFileAlt),
-                              Column(children: [
-                                Text('Vidéos', style: AppText.headline5),
-                                Text('9 fichiers',
-                                    style: AppText.headline6
-                                        .copyWith(color: AppColors.greyColor)),
-                              ])
-                            ],
-                          ),
-                        ),
-                      ]),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(width: 30, height: 30, color: Colors.purple),
-                        Container(
-                            width: 30, height: 30, color: Colors.purpleAccent),
-                      ]),
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(width: 30, height: 30, color: Colors.green),
-                        Container(
-                            width: 30, height: 30, color: Colors.greenAccent),
-                      ]),
-                ]),
-              ],
+            Text('Catégories', style: AppText.headline5),
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                  Container(width: 90, height: 90, color: AppColors.primaryColor),
+                ]
+              )
             ),
-            const SizedBox(height: 20),
-            Column(
-              children: [
-                Text(
-                  'Collections',
-                  style: AppText.headline4,
-                ),
-                Column(children: [
-                  Container(width: double.infinity, color: Colors.purple),
-                  Container(width: double.infinity, color: Colors.purpleAccent),
-                ])
-              ],
+            Text('Collections', style: AppText.headline5),
+            SingleChildScrollView(
+              child: Row(
+                children: [
+                  Container(width: double.infinity, height: 90, color: AppColors.primaryColor),
+                  Container(width: double.infinity, height: 90, color: AppColors.primaryColor),
+                ]
+              )
             ),
-          ],
-        ),
-      ),
+          ]
+        )
+      )
     );
   }
 }

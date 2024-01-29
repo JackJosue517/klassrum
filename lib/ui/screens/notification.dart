@@ -42,28 +42,27 @@ class _NotificationScreenState extends State<NotificationScreen> {
         ),
         body: notificationsList.isNotEmpty
             ? ListView.separated(
-              itemCount: notificationsList.length,
+                itemCount: notificationsList.length,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
                 itemBuilder: (context, index) => Slidable(
-                  endActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                        label: 'Supprimer',
-                        icon: Icons.delete,
-                        foregroundColor: Colors.white,
-                        backgroundColor: AppColors.redColor,
-                        onPressed: () => _deleteNotification(index),
-                      )
-                    ]
-                  ),
-                  child: NotificationCard(
-                      title: 'Nouvelle session de cours',
-                      subtitle: 'Vous avez prochainement cours avec M. HOETOWOU',
-                      icon: LineIcons.bell,
-                      iconColor: AppColors.primaryColor),
-                ))
+                      endActionPane:
+                          ActionPane(motion: const ScrollMotion(), children: [
+                        SlidableAction(
+                          label: 'Supprimer',
+                          icon: Icons.delete,
+                          foregroundColor: Colors.white,
+                          backgroundColor: AppColors.redColor,
+                          onPressed: (context) => _deleteNotification(index),
+                        )
+                      ]),
+                      child: const NotificationCard(
+                          title: 'Nouvelle session de cours',
+                          subtitle:
+                              'Vous avez prochainement cours avec M. HOETOWOU',
+                          icon: LineIcons.bell,
+                          iconColor: AppColors.primaryColor),
+                    ))
             : Center(
                 child: Column(
                 children: [
