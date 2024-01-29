@@ -18,7 +18,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     super.initState();
     _controller = PageController();
   }
@@ -122,7 +121,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     super.dispose();
   }
 }

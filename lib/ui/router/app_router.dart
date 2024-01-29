@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:klassrum/ui/pages/search.dart';
 import 'package:klassrum/ui/screens/call_room.dart';
 import 'package:klassrum/ui/screens/course_details.dart';
 import 'package:klassrum/ui/screens/home.dart';
@@ -17,6 +18,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case '/search':
+        return MaterialPageRoute(builder: (_) => const SearchPage());
       case '/notifications':
         return MaterialPageRoute(builder: (_) => const NotificationScreen());
       case '/course-details':

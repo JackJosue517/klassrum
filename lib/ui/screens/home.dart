@@ -5,6 +5,7 @@ import 'package:klassrum/ui/pages/history.dart';
 import 'package:klassrum/ui/pages/resources.dart';
 import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,22 +32,43 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.of(context).pushNamed('/notifications');
   }
 
+  void _seeSettings() {
+    Navigator.of(context).pushNamed('/settings');
+  }
+
+  void _seeSearchPage() {
+    Navigator.of(context).pushNamed('/search');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.trueWhiteColor,
-        leading: const CircleAvatar(
-          backgroundImage: NetworkImage(
-            'https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg',
-          ),
+        leading: GestureDetector(
+          onTap: _seeSettings,
+          child: CircleAvatar(
+              child: CachedNetworkImage(
+            imageUrl: "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
+            //placeholder: (context, url) => const CircularProgressIndicator(),
+            //errorWidget: (context, url, error) => const Icon(Icons.error),
+          )),
         ),
         actions: [
-          IconButton.outlined(
-            onPressed: _seeNotifications,
-            icon: const Icon(
-              LineIcons.bell,
-              size: 18.0,
+          _selectedIndex == 1
+              ? GestureDetector(
+                  onTap: _seeSearchPage,
+                  child: const Icon(
+                    LineIcons.search,
+                    size: 22.0,
+                    color: AppColors.darkColor,
+                  ),
+                )
+              : const Text(''),
+          GestureDetector(
+            onTap: _seeNotifications,
+            child: const Icon(
+              LineIcons.bellAlt,
+              size: 22.0,
               color: AppColors.darkColor,
             ),
           ),
@@ -54,15 +76,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: viewItems[_selectedIndex],
       bottomNavigationBar: Container(
-        color: AppColors.primaryColor,
+        color: AppColors.whiteColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
           child: GNav(
-            backgroundColor: AppColors.primaryColor,
+            backgroundColor: AppColors.whiteColor,
             color: AppColors.trueWhiteColor,
-            activeColor: AppColors.primaryColor,
+            activeColor: AppColors.whiteColor,
             tabBackgroundColor: AppColors.trueWhiteColor,
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(5.0),
             gap: 9,
             onTabChange: _updateViews,
             tabs: const <GButton>[

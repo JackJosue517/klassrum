@@ -1,14 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:klassrum/ui/components/go_back_button.dart';
+import 'package:klassrum/ui/components/notification_card.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:klassrum/ui/configs/styles.dart';
 
-class NotificationScreen extends StatelessWidget {
+class NotificationScreen extends StatefulWidget {
   const NotificationScreen({super.key});
+
+  @override
+  State<NotificationScreen> createState() => _NotificationScreenState();
+}
+
+class _NotificationScreenState extends State<NotificationScreen> {
+  final List<NotificationData> notificationsList = const [
+    NotificationData(
+      title: 'Nouvelle session de cours ajouté',
+      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
+    ),
+    NotificationData(
+      title: 'Nouvelle session de cours ajouté',
+      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
+    ),
+    NotificationData(
+      title: 'Nouvelle session de cours ajouté',
+      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
+    ),
+    NotificationData(
+      title: 'Nouvelle session de cours ajouté',
+      subtitle: 'Une nouvelle rencontre aura lieu avec M. BARATE Mohamed',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Notifications'),
-      ),
-    );
+        appBar: AppBar(
+          leading: const GoBackButton(),
+          title: const Text('Notifications'),
+        ),
+        body: notificationsList.isNotEmpty
+            ? ListView.builder(
+                itemCount: notificationsList.length,
+                itemBuilder: (context, index) => Slidable(
+                  endActionPane:
+                      ActionPane(motion: const BehindMotion(), children: [
+                    SlidableAction(
+                      foregroundColor: AppColors.trueWhiteColor,
+                      backgroundColor: AppColors.redColor,
+                      onPressed: (context) => _deleteNotification(index),
+                    )
+                  ]),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 10.0),
+                    child: Column(
+                      children: [
+                        NotificationCard(
+                          title: notificationsList[index].title.toString(),
+                          subtitle:
+                              notificationsList[index].subtitle.toString(),
+                          icon: LineIcons.bellAlt,
+                          iconColor: Colors.green,
+                        ),
+                        const Divider(
+                          color: AppColors.grey200,
+                          height: 2.0,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            : Center(
+                child: Column(
+                children: [
+                  SvgPicture.asset('assets/svg/board01.svg'),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text('Vous êtes à jour...'),
+                ],
+              )));
   }
+
+  void _deleteNotification(int index) {
+    notificationsList.removeAt(index);
+  }
+}
+
+enum NotificationType { newSession, doAction }
+
+class NotificationData {
+  final String title;
+  final String subtitle;
+  const NotificationData({required this.title, required this.subtitle});
 }

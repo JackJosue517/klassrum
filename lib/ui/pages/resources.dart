@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:gap/gap.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 
 class ResourcePage extends StatelessWidget {
@@ -9,80 +7,72 @@ class ResourcePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: Container(
-          color: AppColors.whiteColor,
-          child: ListView.builder(
-            itemCount: 15,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                      child: CachedNetworkImage(
-                    imageUrl:
-                        "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                    placeholder: (context, url) =>
-                        const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  )),
-                  const Gap(16),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            const Expanded(
-                              child: Text(
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  "INF 331 - Programmation Orientée Objet kakhbfvhfbvjhsbbvjhbrsfhbvhsbf"),
-                            ),
-                            const Gap(8),
-                            Container(
-                              padding: const EdgeInsets.all(4),
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: AppColors.primaryColor,
-                              ),
-                              child: Center(
-                                  child: Text("15",
-                                      style: AppText.headline6.copyWith(
-                                          color: AppColors.whiteColor))),
-                            ),
-                          ],
-                        ),
-                        const Gap(4),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  color: Colors.grey[700],
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                "CARNET_DE_BORD.pdf jhe,gj hk oezfnhkjleza:;,nfyc_èç",
-                              ),
-                            ),
-                            const Gap(8),
-                            const Text("12:45"),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+      padding: const EdgeInsets.all(14.0),
+      child: Column(
+        children: [
+          Column(
+            children: [
+              Text(
+                'Récents',
+                style: AppText.headline4,
               ),
-            ),
-          )),
+              SingleChildScrollView(
+                child: Row(children: [
+                  ListView.separated(
+                      itemCount: 9,
+                      separatorBuilder: (BuildContext context, int index) =>
+                          const SizedBox(width: 15),
+                      itemBuilder: (context, index) => Container(
+                            color: AppColors.primaryColor,
+                          ))
+                ]),
+              )
+            ],
+          ),
+          const SizedBox(height: 20),
+          Column(
+            children: [
+              Text(
+                'Catégories',
+                style: AppText.headline4,
+              ),
+              Column(children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(color: Colors.yellow),
+                      Container(color: Colors.yellowAccent),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(color: Colors.purple),
+                      Container(color: Colors.purpleAccent),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(color: Colors.green),
+                      Container(color: Colors.greenAccent),
+                    ]),
+              ]),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Column(
+            children: [
+              Text(
+                'Collections',
+                style: AppText.headline4,
+              ),
+              Column(children: [
+                Container(width: double.infinity, color: Colors.purple),
+                Container(width: double.infinity, color: Colors.purpleAccent),
+              ])
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
