@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   bool switchOff = false;
 
-  void onChangeOperation(bool value) {
+  void _onChangeOperation(bool value) {
     setState(() {
       switchOff = value;
     });
@@ -23,6 +24,7 @@ class _SettingScreenState extends State<SettingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const GoBackButton(),
         title: const Text("Paramètres"),
       ),
       body: Padding(
@@ -79,22 +81,13 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
-                    children: [
-                      Icon(Icons.light_mode),
-                      Gap(8),
-                      Text(
-                        "Mode d'écran",
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
                   const Gap(8),
                   SwitchListTile(
-                    title: const Text("Sombre"),
+                    title: Text("Apparence", style: AppText.headline5),
+                    subtitle: Text('Activer ou désactiver le thème sombre', style: AppText.headline6),
                     value: switchOff,
                     activeColor: AppColors.primaryColor,
-                    onChanged: onChangeOperation,
+                    onChanged: _onChangeOperation,
                   ),
                 ],
               ),
@@ -106,13 +99,31 @@ class _SettingScreenState extends State<SettingScreen> {
                 color: Colors.grey[100],
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(Icons.logout),
-                  Gap(8),
+                  const Icon(Icons.logout),
+                  const Gap(8),
+                  Text(
+                    "Signaler un problème",
+                    style: AppText.headline6,
+                  ),
+                ],
+              ),
+            ),
+            const Gap(16),
+            Container(
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.logout),
+                  const Gap(8),
                   Text(
                     "Déconnexion",
-                    style: TextStyle(fontSize: 16),
+                    style: AppText.headline6.copyWith(color: AppColors.redColor),
                   ),
                 ],
               ),

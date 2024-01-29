@@ -21,16 +21,18 @@ class _UpComingPageState extends State<UpComingPage> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      TableCalendar(
-        locale: 'fr_FR',
-        rowHeight: 43,
-        selectedDayPredicate: (day) => isSameDay(day, today),
-        availableGestures: AvailableGestures.all,
-        firstDay: DateTime.utc(2020, 10, 16),
-        lastDay: DateTime.utc(2030, 3, 14),
-        focusedDay: today,
-        onDaySelected: _onDaySelected,
-      )
+      Container(
+        child: TableCalendar(
+          rowHeight: 43,
+          selectedDayPredicate: (day) => isSameDay(day, today),
+          availableGestures: AvailableGestures.all,
+          firstDay: DateTime.utc(2020, 10, 16),
+          lastDay: DateTime.utc(2030, 3, 14),
+          focusedDay: today,
+          onDaySelected: _onDaySelected,
+        ),
+      ),
+      const Text('Cours à venir')
     ]);
   }
 }

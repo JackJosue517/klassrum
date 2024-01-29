@@ -14,7 +14,12 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
-  final List<NotificationData> notificationsList = const [];
+  final List<NotificationData> notificationsList = const [
+    NotificationData(
+      title: 'Nouvelle session de cours',
+      subtitle: 'Vous aurez cours avec M. HOETOWOU'
+    )
+  ];
 
   @override
   Widget build(BuildContext context) {
