@@ -17,7 +17,9 @@ class NotificationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(child: ListTile(
+    return Card(
+      elevation: 0,
+      child: ListTile(
       title: Text(title, style: AppText.headline5), leading: Icon(icon, color: iconColor), subtitle: Text(subtitle, style: AppText.headline6)));
         
   }

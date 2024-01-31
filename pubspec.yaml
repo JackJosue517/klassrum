@@ -45,6 +45,8 @@ dependencies:
   sdp_transform: ^0.3.2
   smooth_page_indicator: ^1.1.0
   table_calendar: ^3.0.9
+  avatars: ^3.0.2
+  intl:
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1

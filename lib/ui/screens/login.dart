@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final passwordFieldController = TextEditingController();
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10)

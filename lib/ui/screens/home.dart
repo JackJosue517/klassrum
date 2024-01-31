@@ -171,8 +171,23 @@ class AppSearchDelegate extends SearchDelegate {
         itemCount: matchQuery.length,
         itemBuilder: (context, index) {
           var result = matchQuery[index];
-          return ListTile(
-            title: Text(result),
+          return matchQuery.isNotEmpty ? Column(
+            children: [
+              const Text('Résultats de recherche'),
+              ListTile(
+                title: Text(result),
+              ),
+            ]
+          ) : const Center(
+            child: Column(
+              children: [
+                SvgPicture.asset('assets/svg/no-update.svg'),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Text('Aucune correspondance trouvée'),
+              ],
+            )
           );
         });
   }
@@ -191,6 +206,7 @@ class AppSearchDelegate extends SearchDelegate {
         itemBuilder: (context, index) {
           var suggestion = suggestions[index];
           return ListTile(
+            leading: Icon(Icons.search),
             title: Text(suggestion),
             onTap: () {
               query = suggestion;

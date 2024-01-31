@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/configs/styles.dart';
+import 'package:avatars/avatars.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -46,15 +47,7 @@ class _SettingScreenState extends State<SettingScreen> {
                       border: Border.all(color: Colors.white, width: 2),
                       color: Colors.white,
                     ),
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          "https://i.ibb.co/1nfH7xw/imresizer-1704975409967.jpg",
-                      placeholder: (context, url) =>
-                          const CircularProgressIndicator(),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ),
-                  ),
+                    child: Avatar(useCache: true, name: 'AYAH Yawavi Etsiam'),)
                   const Gap(24),
                   const Column(
                     children: [
@@ -101,7 +94,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.logout),
+                  const Icon(Icons.home),
                   const Gap(8),
                   Text(
                     "Signaler un problème",

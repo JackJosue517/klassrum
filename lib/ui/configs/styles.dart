@@ -8,7 +8,7 @@ class AppColors {
 
   static const Color trueWhiteColor = Color(0xFFFFFFFF);
 
-  static const Color redColor = Color(0xFF363C32);
+  static const Color redColor = Color.fromARGB(255, 255, 27, 27);
 
   static const Color darkColor = Color(0xFF363C32);
 
@@ -20,7 +20,7 @@ class AppColors {
 
   static const Color blackColor = Color(0x01000000);
 
-  static const Color greenColor = Colors.green;
+  static const Color greenColor = Color.fromARGB(255, 52, 245, 58);
 }
 
 class AppText {

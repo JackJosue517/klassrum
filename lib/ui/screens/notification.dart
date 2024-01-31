@@ -18,7 +18,15 @@ class _NotificationScreenState extends State<NotificationScreen> {
     NotificationData(
       title: 'Nouvelle session de cours',
       subtitle: 'Vous aurez cours avec M. HOETOWOU'
-    )
+    ),
+    NotificationData(
+      title: 'Nouvelle session de cours',
+      subtitle: 'Vous aurez cours avec M. HOETOWOU'
+    ),
+    NotificationData(
+      title: 'Nouvelle session de cours',
+      subtitle: 'Vous aurez cours avec M. HOETOWOU'
+    ),
   ];
 
   @override
@@ -27,21 +35,36 @@ class _NotificationScreenState extends State<NotificationScreen> {
         appBar: AppBar(
           leading: const GoBackButton(),
           title: const Text('Notifications'),
+          actions: [
+            GestureDetector(
+              onTap: _deleteAllNotifications,
+              child: const Icon(
+                LineIcons.trash,
+                size: 32.0,
+                color: AppColors.greyColor,
+              ),
+            ),
+            const SizedBox(width: 10)
+          ]
         ),
         body: notificationsList.isNotEmpty
-            ? ListView.separated(
+            ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.separated(
                 itemCount: notificationsList.length,
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 10),
                 itemBuilder: (context, index) => Slidable(
                       endActionPane:
-                          ActionPane(motion: const ScrollMotion(), children: [
+                          ActionPane(motion: const BehindMotion(), children: [
                         SlidableAction(
+                          flex: 1,
+                          spacing: 2,
                           label: 'Supprimer',
-                          icon: Icons.delete,
+                          icon: LineIcons.trash,
                           foregroundColor: Colors.white,
                           backgroundColor: AppColors.redColor,
-                          onPressed: (context) => _deleteNotification(index),
+                          onPressed: (context) => _deleteOneNotification(index),
                         )
                       ]),
                       child: const NotificationCard(
@@ -50,11 +73,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               'Vous avez prochainement cours avec M. HOETOWOU',
                           icon: LineIcons.bell,
                           iconColor: AppColors.primaryColor),
-                    ))
+                    )))
             : Center(
                 child: Column(
                 children: [
-                  SvgPicture.asset('assets/svg/board01.svg'),
+                  SvgPicture.asset('assets/svg/no-update.svg'),
                   const SizedBox(
                     height: 30,
                   ),
@@ -63,8 +86,16 @@ class _NotificationScreenState extends State<NotificationScreen> {
               )));
   }
 
-  void _deleteNotification(int index) {
-    notificationsList.removeAt(index);
+  void _deleteOneNotification(int index) {
+    setState((){
+      notificationsList.removeAt(index);
+    });
+  }
+
+  void _deleteAllNotifications() {
+    setState((){
+      notificationsList.clear();
+    });
   }
 }
 
