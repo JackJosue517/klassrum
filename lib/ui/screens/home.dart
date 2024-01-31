@@ -6,6 +6,7 @@ import 'package:klassrum/ui/pages/history.dart';
 import 'package:klassrum/ui/pages/resources.dart';
 import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:avatars/avatars.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -57,10 +58,9 @@ class _HomeScreenState extends State<HomeScreen> {
           onTap: _seeSettings,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: 55.0,
-              height: 55.0,
-              child: Image.asset('assets/img/logo.jpg'),
+            child: Avatar(
+              useCache: true,
+              name: 'AYAH Yawavi Etsiam'
             ),
           ),
         ),
