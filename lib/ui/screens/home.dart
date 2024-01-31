@@ -179,7 +179,7 @@ class AppSearchDelegate extends SearchDelegate {
                 title: Text(result),
               ),
             ]
-          ) : const Center(
+          ) : Center(
             child: Column(
               children: [
                 SvgPicture.asset('assets/svg/no-update.svg'),
