@@ -4,10 +4,11 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:klassrum/ui/pages/history.dart';
 import 'package:klassrum/ui/pages/resources.dart';
-import 'package:klassrum/ui/pages/upcoming.dart';
+import 'package:klassrum/ui/pages/upComming.dart';
 import 'package:line_icons/line_icons.dart';
-import 'package:avatars/avatars.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../pages/upComming.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,13 +56,26 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: GestureDetector(
+        /*leading: GestureDetector(
           onTap: _seeSettings,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Avatar(
               useCache: true,
               name: 'AYAH Yawavi Etsiam'
+            ),
+          ),
+        ),*/
+        leading: GestureDetector(
+          onTap: _seeSettings,
+          child: const Padding(
+            padding: EdgeInsets.all(8.0),
+            /*child: Avatar(
+                useCache: true,
+                name: 'AYAH Yawavi Etsiam'
+            ),*/
+            child: CircleAvatar(
+              backgroundImage: AssetImage('assets/img/default_profil.jpg'),
             ),
           ),
         ),
@@ -72,7 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Icon(
                     LineIcons.search,
                     size: 32.0,
-                    color: AppColors.greyColor,
+                    //color: AppColors.darkColor,
                   ),
                 )
               : const Text(''),
@@ -110,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: const EdgeInsets.all(16),
                 gap: 8,
                 tabs: const <GButton>[
-                  GButton(icon: LineIcons.home, text: 'Cours'),
+                  GButton(icon: LineIcons.book, text: 'Cours'),
                   GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
                   GButton(icon: LineIcons.history, text: 'Historique'),
                 ],
@@ -207,7 +221,7 @@ class AppSearchDelegate extends SearchDelegate {
         itemBuilder: (context, index) {
           var suggestion = suggestions[index];
           return ListTile(
-            leading: Icon(Icons.search),
+            leading: const Icon(Icons.search),
             title: Text(suggestion),
             onTap: () {
               query = suggestion;

@@ -47,7 +47,11 @@ class _SettingScreenState extends State<SettingScreen> {
                       border: Border.all(color: Colors.white, width: 2),
                       color: Colors.white,
                     ),
-                    child: Avatar(useCache: true, name: 'AYAH Yawavi Etsiam'),),
+                    //child: Avatar(useCache: true, name: 'AYAH Yawavi Etsiam')
+                    child: const CircleAvatar(
+                      backgroundImage: AssetImage('assets/img/default_profil.jpg'),
+                    ),
+                ),
                   const Gap(24),
                   const Column(
                     children: [

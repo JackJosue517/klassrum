@@ -56,6 +56,7 @@ class CourseDetailsScreen extends StatelessWidget {
                         //color: AppColors.whiteColor
                       ),
                       "INF 331 - Programmation Orientée Objet"),
+
                   const Gap(8),
                   Text(
                       style: TextStyle(
@@ -63,6 +64,41 @@ class CourseDetailsScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey.shade700),
                       "Les conceptes de l'orienté objet"),
+                  const Gap(8),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                       Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundImage: AssetImage('assets/img/default_profil.jpg'),
+                            radius: 12,
+                          ),
+                          Gap(4),
+                          Text("Mr ABOLO")
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.fiber_manual_record,
+                            color: Colors.red,
+                            size: 24.0,
+                          ),
+                          Gap(4),
+                          Text(
+                            "En cours",
+                            style: TextStyle(
+                              color: Color(0xFFA8A6AC),
+                              fontWeight: FontWeight.w400,
+                              fontSize: 14,
+                              fontFamily: "Inter",
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                   const Gap(24),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -94,7 +130,7 @@ class CourseDetailsScreen extends StatelessWidget {
                   ),
                   const Gap(8),
                   const Text(
-                      "An vous pouvez retirer votre consentement ou vous opposer au traitement des données fondé sur l'intérêt légitime en cliquant sur « En savoir plus » ou en allant dans notre politique de confidentialité sur ce site internet.Vos données personnelles sont traitées pour les finalités suivantes:Cookies d'analyse, Données de géolocalisation précises et identification par analyse de l’appareil, Publicités et contenu personnalisés, mesure de performance des publicités et du contenu, études d’audience et développement de services, Réseaux sociaux ?GJZ FQH?MO. ZEHA?GIUINEZ?MFNBJH VEZ FNKLQS?C/.?N SD?./W?NB EZUSDIQOOEZYVFDSYBUN?M.EZQSDF TRYEIUZSQPR 4CFZ8SIMMEZ/FDS.H G74RZEFSODO./ FCBS EZ9Q0°SD¨%MZF /.DSYR7E8ZFOPSDO REFDG7T943PEZODSF G9ERH0Z° SQ PM.EZF/DS§ GK57TRFDSIOCM"),
+                      "An vous pouvez retirer votre consentement ou vous opposer au traitement des données fondé sur l'intérêt légitime en cliquant sur « En savoir plus » ou en allant dans notre politique de confidentialité sur ce site internet.Vos données personnelles sont traitées pour les finalités suivantes:Cookies d'analyse, Données de géolocalisation précises et identification par analyse de l’appareil, Publicités et contenu personnalisés, mesure de performance des publicités et du contenu"),
                   const Gap(48),
                   Align(
                     alignment: Alignment.topRight,
