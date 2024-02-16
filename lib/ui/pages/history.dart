@@ -7,8 +7,8 @@ class HistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(LineIcons.videoFileAlt, color: AppColors.primaryColor, size: 50),
+    return  const Center(
+      child: Icon(LineIcons.videoFileAlt, color: AppColors.buttonColor, size: 50),
     );
   }
 }

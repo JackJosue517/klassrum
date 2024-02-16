@@ -78,7 +78,7 @@ class _CalendarState extends State<Calendar> {
             lastDay: _lastDay,
             focusedDay: _focusedDay,
             onDaySelected: _onDaySelected,
-            calendarStyle: const CalendarStyle(
+            calendarStyle: CalendarStyle(
               weekendTextStyle: TextStyle(
                 color: AppColors.primaryColor,
               ),

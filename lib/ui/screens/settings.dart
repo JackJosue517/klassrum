@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/configs/styles.dart';
-import 'package:avatars/avatars.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({Key? key}) : super(key: key);
@@ -14,10 +14,15 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   bool switchOff = false;
+  String text = "Claire";
 
   void _onChangeOperation(bool value) {
     setState(() {
       switchOff = value;
+      AdaptiveTheme.of(context).setThemeMode(
+        switchOff ? AdaptiveThemeMode.dark : AdaptiveThemeMode.light,
+      );
+      text = (value == false)? "claire":"sombre";
     });
   }
 
@@ -45,7 +50,6 @@ class _SettingScreenState extends State<SettingScreen> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 2),
-                      color: Colors.white,
                     ),
                     //child: Avatar(useCache: true, name: 'AYAH Yawavi Etsiam')
                     child: const CircleAvatar(
@@ -70,18 +74,18 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             const Gap(8),
             Container(
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                color: Colors.grey[100],
+                color: AppColors.cardColor,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Gap(8),
                   SwitchListTile(
-                    title: Text("Apparence", style: AppText.headline5),
-                    subtitle: Text('Activer ou désactiver le thème sombre', style: AppText.headline6),
+                    title: Text("Thème", style: AppText.headline5),
+                    subtitle: Text(text, style: AppText.headline6),
                     value: switchOff,
                     activeColor: AppColors.primaryColor,
                     onChanged: _onChangeOperation,
@@ -90,7 +94,7 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
             ),
             const Gap(16),
-            Container(
+            /*Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
                 color: Colors.grey[100],
@@ -107,11 +111,11 @@ class _SettingScreenState extends State<SettingScreen> {
                 ],
               ),
             ),
-            const Gap(16),
+            const Gap(16),*/
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey[100],
+                color: AppColors.cardColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Row(

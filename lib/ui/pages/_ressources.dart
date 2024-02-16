@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:klassrum/ui/configs/styles.dart';
+/*import 'package:klassrum/ui/configs/styles.dart';
 
 class ResourcePage extends StatelessWidget {
   const ResourcePage({super.key});
@@ -11,7 +11,7 @@ class ResourcePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Container(
-          color: AppColors.whiteColor,
+          color: AppColors.trueWhiteColor,
           child: ListView.builder(
             itemCount: 15,
             itemBuilder: (context, index) => Padding(
@@ -47,7 +47,7 @@ class ResourcePage extends StatelessWidget {
                             const Gap(8),
                             Container(
                               padding: const EdgeInsets.all(4),
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: AppColors.primaryColor,
                               ),
@@ -85,4 +85,4 @@ class ResourcePage extends StatelessWidget {
           )),
     );
   }
-}
+}*/

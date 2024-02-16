@@ -16,7 +16,7 @@ class AppTheme {
   }
 
   static AppBarTheme _buildBarTheme() {
-    return const AppBarTheme(
+    return  AppBarTheme(
       backgroundColor: AppColors.trueWhiteColor,
       foregroundColor: AppColors.greyColor,
       centerTitle: true,
@@ -25,10 +25,10 @@ class AppTheme {
   }
 
   static FloatingActionButtonThemeData _buildFloatingActionButtonThemeData() {
-    return const FloatingActionButtonThemeData(
+    return FloatingActionButtonThemeData(
       elevation: 0.0,
       backgroundColor: AppColors.primaryColor,
-      foregroundColor: AppColors.whiteColor,
+      foregroundColor: AppColors.trueWhiteColor,
     );
   }
 }

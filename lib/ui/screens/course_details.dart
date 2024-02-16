@@ -8,7 +8,6 @@ class CourseDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
@@ -36,7 +35,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       onTap: () => Navigator.pop(context),
                       child: const Icon(
                         Icons.arrow_back,
-                        color: AppColors.whiteColor,
+                        color: AppColors.buttonTextColor,
                       ),
                     ),
                   )
@@ -49,26 +48,25 @@ class CourseDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                   const Text(
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
-                        //color: AppColors.whiteColor
                       ),
                       "INF 331 - Programmation Orientée Objet"),
 
                   const Gap(8),
-                  Text(
+                  const Text(
                       style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey.shade700),
+                          ),
                       "Les conceptes de l'orienté objet"),
                   const Gap(8),
-                  const Row(
+                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Row(
+                       const Row(
                         children: [
                           CircleAvatar(
                             backgroundImage: AssetImage('assets/img/default_profil.jpg'),
@@ -80,16 +78,16 @@ class CourseDetailsScreen extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.fiber_manual_record,
                             color: Colors.red,
                             size: 24.0,
                           ),
-                          Gap(4),
+                          const Gap(4),
                           Text(
                             "En cours",
                             style: TextStyle(
-                              color: Color(0xFFA8A6AC),
+                              color: AppColors.textgrayColor,
                               fontWeight: FontWeight.w400,
                               fontSize: 14,
                               fontFamily: "Inter",
@@ -106,7 +104,7 @@ class CourseDetailsScreen extends StatelessWidget {
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Colors.white54,
+                      color: AppColors.cardColor,
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -114,11 +112,13 @@ class CourseDetailsScreen extends StatelessWidget {
                         Icon(
                           Icons.timelapse,
                         ),
-                        Gap(8),
-                        Text(
+                         Gap(8),
+                         Text(
                           "Lundi, 17 Juin -  12H à 14H",
                           style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 18),
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                          ),
                         ),
                       ],
                     ),
@@ -126,7 +126,8 @@ class CourseDetailsScreen extends StatelessWidget {
                   const Gap(24),
                   const Text(
                     "Description",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
+                    ),
                   ),
                   const Gap(8),
                   const Text(
@@ -135,20 +136,20 @@ class CourseDetailsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topRight,
                     child: FilledButton.tonalIcon(
-                      style: const ButtonStyle(
+                      style:  const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(AppColors.primaryColor)),
+                              MaterialStatePropertyAll(AppColors.buttonColor)),
                       onPressed: () {
                         Navigator.of(context).pushNamed('/call-room');
                       },
                       icon: const Icon(
                         Icons.video_call,
-                        color: Colors.white,
+                        color: AppColors.buttonTextColor,
                         size: 24,
                       ),
-                      label: const Text(
+                      label:  const Text(
                         "Rejoindre  la salle",
-                        style: TextStyle(color: AppColors.whiteColor),
+                        style: TextStyle(color: AppColors.buttonTextColor),
                       ),
                     ),
                   ),

@@ -3,56 +3,69 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:klassrum/ui/components/cours_space.dart';
 import 'package:klassrum/ui/configs/styles.dart';
+import 'package:klassrum/ui/pages/calendar.dart';
 
 class UpComingPage extends StatelessWidget {
   const UpComingPage({super.key});
 
+  void onTapDay(BuildContext context){
+    showDialog(context: context, builder:(context) {
+      return const Dialog(child: Calendar(),);
+    },);
+  }
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            //crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Container(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 5, vertical: 2),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    border: Border.all(
-                      color: Colors.blue, // Couleur de la bordure
-                      width: 2.0, // Largeur de la bordure
-                    )),
-                child: const Text(
-                  "Aujourd'hui",
-                  textAlign: TextAlign.end,
-                ),
-              ),
-              const Gap(8),
-
-            ],
-          ),
-          //const Gap(4),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
-              //color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: const Column(
+    return SizedBox(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const Gap(16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              //crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Gap(8),
-                CourseComponent(),
-                Gap(8),
-                CourseComponent(),
-                Gap(8),
-                CourseComponent()
+                InkWell(
+                  onTap: () => onTapDay(context),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColors.buttonColor,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child:  Row(
+                      children: [
+                        Icon(Icons.calendar_month, color: AppColors.buttonTextColor,),
+                        Gap(4),
+                        Text(
+                          "Aujourd'hui",
+                          textAlign: TextAlign.end,
+                          style: TextStyle(
+                              color: AppColors.buttonTextColor
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const Gap(8),
+
               ],
             ),
-          ),
-        ],
+            const Gap(24),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              decoration: BoxDecoration(
+                //color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(12),
+              ),
+
+              child: Column(
+                children:List.generate(10, (index) => const CourseComponent()).toList()
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

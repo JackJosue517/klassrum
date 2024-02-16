@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:klassrum/ui/components/board.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:line_icons/line_icons.dart';
@@ -82,7 +81,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   SmoothPageIndicator(
                     controller: _controller,
                     count: 3,
-                    effect: const WormEffect(
+                    effect:  WormEffect(
                       activeDotColor: AppColors.primaryColor,
                     ),
                   ),

@@ -13,8 +13,8 @@ class _ResourcePageState extends State<ResourcePage> {
   
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(LineIcons.imageFileAlt, color: AppColors.primaryColor, size: 50),
+    return  const Center(
+      child: Icon(LineIcons.imageFileAlt, color: AppColors.buttonColor, size: 50),
     );
           
   }

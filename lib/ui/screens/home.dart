@@ -8,8 +8,6 @@ import 'package:klassrum/ui/pages/upComming.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../pages/upComming.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -56,24 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        /*leading: GestureDetector(
-          onTap: _seeSettings,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Avatar(
-              useCache: true,
-              name: 'AYAH Yawavi Etsiam'
-            ),
-          ),
-        ),*/
         leading: GestureDetector(
           onTap: _seeSettings,
           child: const Padding(
             padding: EdgeInsets.all(8.0),
-            /*child: Avatar(
-                useCache: true,
-                name: 'AYAH Yawavi Etsiam'
-            ),*/
             child: CircleAvatar(
               backgroundImage: AssetImage('assets/img/default_profil.jpg'),
             ),
@@ -86,7 +70,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Icon(
                     LineIcons.search,
                     size: 32.0,
-                    //color: AppColors.darkColor,
                   ),
                 )
               : const Text(''),
@@ -96,7 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: const Icon(
               LineIcons.bellAlt,
               size: 32.0,
-              color: AppColors.greyColor,
             ),
           ),
           const SizedBox(width: 10)
@@ -110,17 +92,13 @@ class _HomeScreenState extends State<HomeScreen> {
           const Divider(
             color: Color.fromRGBO(189, 189, 189, 1),
           ),
-          Container(
-            color: AppColors.trueWhiteColor,
-            child: Padding(
+            Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
               child: GNav(
                 onTabChange: _updateViews,
-                backgroundColor: AppColors.trueWhiteColor,
-                color: Colors.grey[800],
-                activeColor: AppColors.trueWhiteColor,
-                tabBackgroundColor: AppColors.primaryColor.withOpacity(0.9),
+                activeColor: AppColors.buttonTextColor,
+                tabBackgroundColor: AppColors.buttonColor.withOpacity(0.9),
                 padding: const EdgeInsets.all(16),
                 gap: 8,
                 tabs: const <GButton>[
@@ -130,7 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-          ),
         ],
       ),
     );
