@@ -17,8 +17,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case '/home':
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case '/notifications':
-        return MaterialPageRoute(builder: (_) => const NotificationScreen());
+      /*case '/notifications':
+        return MaterialPageRoute(builder: (_) => const NotificationScreen());*/
       case '/course-details':
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());
       case '/call-room':
