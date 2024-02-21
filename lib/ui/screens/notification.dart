@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:klassrum/data/models/AppNotification.dart';
 import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/components/notification_card.dart';
@@ -107,4 +107,4 @@ class _NotificationScreenState extends State<NotificationScreen> {
       notificationsList.clear();
     });
   }
-}
+}*/

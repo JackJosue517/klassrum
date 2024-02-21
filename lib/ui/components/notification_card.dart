@@ -3,7 +3,7 @@ import 'package:klassrum/data/models/AppNotification.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:line_icons/line_icons.dart';
 
-class NotificationCard extends StatelessWidget {
+/*class NotificationCard extends StatelessWidget {
    NotificationCard({
     super.key,
     required this.title,
@@ -47,4 +47,4 @@ class NotificationCard extends StatelessWidget {
         return Colors.black;
     }
   }
-}
+}*/
