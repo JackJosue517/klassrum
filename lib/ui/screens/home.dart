@@ -4,9 +4,10 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:klassrum/ui/pages/history.dart';
 import 'package:klassrum/ui/pages/resources.dart';
-import 'package:klassrum/ui/pages/upComming.dart';
+import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_svg/svg.dart';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

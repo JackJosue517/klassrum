@@ -1,6 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:klassrum/logic/blocs/authentication/authentication_bloc.dart';
 import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -22,12 +23,15 @@ class _SettingScreenState extends State<SettingScreen> {
       AdaptiveTheme.of(context).setThemeMode(
         switchOff ? AdaptiveThemeMode.dark : AdaptiveThemeMode.light,
       );
-      text = (value == false)? "claire":"sombre";
+      text = (value == false) ? "claire" : "sombre";
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final authBloc = context.watch<AuthenticationBloc>();
+    final user = authBloc.state.user;
+
     return Scaffold(
       appBar: AppBar(
         leading: const GoBackButton(),
@@ -53,20 +57,24 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     //child: Avatar(useCache: true, name: 'AYAH Yawavi Etsiam')
                     child: const CircleAvatar(
-                      backgroundImage: AssetImage('assets/img/default_profil.jpg'),
+                      backgroundImage:
+                          AssetImage('assets/img/default_profil.jpg'),
                     ),
-                ),
+                  ),
                   const Gap(24),
-                  const Column(
+                  Column(
                     children: [
-                      Text("AYAH Yawavi Etsiam",
-                        style: TextStyle(fontSize: 17,
-                        fontWeight: FontWeight.bold),
+                      Text(
+                        user.username,
+                        style: const TextStyle(
+                            fontSize: 17, fontWeight: FontWeight.bold),
                       ),
-                      Gap(8),
-                      Text("Licence professionnelle en genie lociciel",
-                        style: TextStyle(fontSize: 15,
-                            fontWeight: FontWeight.w200),)
+                      const Gap(8),
+                      Text(
+                        user.uid,
+                        style: const TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.w200),
+                      )
                     ],
                   ),
                 ],
@@ -122,9 +130,13 @@ class _SettingScreenState extends State<SettingScreen> {
                 children: [
                   const Icon(Icons.logout),
                   const Gap(8),
-                  Text(
-                    "Déconnexion",
-                    style: AppText.headline6.copyWith(color: AppColors.redColor),
+                  GestureDetector(
+                    onTap: () => authBloc.add(LogoutUser()),
+                    child: Text(
+                      "Déconnexion",
+                      style:
+                          AppText.headline6.copyWith(color: AppColors.redColor),
+                    ),
                   ),
                 ],
               ),

@@ -25,6 +25,13 @@ class _AppTextFieldState extends State<AppTextField> {
     return SizedBox(
       height: 56,
       child: TextFormField(
+        controller: widget.fieldController,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Veuiller entrer le texte requis';
+          }
+          return null;
+        },
         keyboardType: TextInputType.visiblePassword,
         obscureText: widget.isPasswordField != null ? !isVisible : false,
         decoration: InputDecoration(
