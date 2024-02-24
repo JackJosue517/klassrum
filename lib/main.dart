@@ -9,8 +9,16 @@ import 'package:klassrum/ui/screens/home.dart';
 import 'package:klassrum/ui/screens/splash.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+
   Bloc.observer = const AuthenticationObserver();
   initializeDateFormatting().then((_) => runApp(const MyApp()));
 }

@@ -45,9 +45,11 @@ dependencies:
   gap: ^3.0.1
   google_fonts: ^6.1.0
   google_nav_bar: ^5.0.6
-  http: null #^1.2.1
+  http: null
+  hydrated_bloc: ^9.1.4
   intl: null
   line_icons: ^2.0.3
+  path_provider: ^2.1.2
   sdp_transform: ^0.3.2
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0

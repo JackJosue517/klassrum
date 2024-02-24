@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:klassrum/data/models/AppUser.dart';
 import 'package:klassrum/data/repositories/authentication_repository.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationEvent, AuthenticationState> {
+class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState>
+    with HydratedMixin {
   AuthenticationBloc() : super(AuthenticationInitial()) {
     on<LoginUser>(_loginUser);
     on<LogoutUser>(_logoutUser);
@@ -35,5 +35,15 @@ class AuthenticationBloc
   void onChange(Change<AuthenticationState> change) {
     super.onChange(change);
     print(change);
+  }
+
+  @override
+  AuthenticationState? fromJson(Map<String, dynamic> json) {
+    return state;
+  }
+
+  @override
+  Map<String, dynamic>? toJson(AuthenticationState state) {
+    return state.user.toMap();
   }
 }
