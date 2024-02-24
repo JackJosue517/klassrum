@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:klassrum/data/models/AppUser.dart';
-import 'package:klassrum/logic/blocs/authentication/authentication_bloc.dart';
+import 'package:klassrum/data/dataproviders/auth_provider.dart';
+import 'package:klassrum/data/repositories/auth_repository.dart';
+import 'package:klassrum/logic/blocs/auth/auth_bloc.dart';
+import 'package:klassrum/logic/observers/app_bloc_observer.dart';
 import 'package:klassrum/logic/observers/authentication_observer.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:klassrum/ui/router/app_router.dart';
-import 'package:klassrum/ui/screens/home.dart';
 import 'package:klassrum/ui/screens/splash.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -14,6 +15,7 @@ import 'package:path_provider/path_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = AppBlocObserver();
 
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
@@ -39,24 +41,27 @@ class MyApp extends StatelessWidget {
           primaryColor: AppColors.trueWhiteColor,
         ),
         initial: AdaptiveThemeMode.light,
-        builder: (theme, darkTheme) => MultiBlocProvider(
+        builder: (theme, darkTheme) => MultiRepositoryProvider(
               providers: [
-                BlocProvider(create: (context) => AuthenticationBloc(), lazy: false)
+                RepositoryProvider(
+                  create: (_) => AuthRepository(AuthDataProvider()),
+                ),
               ],
-              child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                title: 'Klassrum',
-                onGenerateRoute: AppRouter.onGenerateRoute,
-                theme: theme,
-                darkTheme: darkTheme,
-                home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-                  builder: (context, state) {
-                    if (state.user == AppUser.empty) {
-                      return const SplashScreen();
-                    } else {
-                      return const HomeScreen();
-                    }
-                  },
+              child: MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (context) => AuthBloc(
+                      context.read<AuthRepository>(),
+                    ),
+                  ),
+                ],
+                child: MaterialApp(
+                  debugShowCheckedModeBanner: false,
+                  title: 'Klassrum',
+                  onGenerateRoute: AppRouter.onGenerateRoute,
+                  theme: theme,
+                  darkTheme: darkTheme,
+                  home: const SplashScreen(),
                 ),
               ),
             ));

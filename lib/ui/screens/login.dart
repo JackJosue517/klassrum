@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:klassrum/logic/blocs/authentication/authentication_bloc.dart';
+import 'package:klassrum/logic/blocs/auth/auth_bloc.dart';
 import 'package:klassrum/ui/components/button.dart';
 import 'package:klassrum/ui/components/textfield.dart';
 import 'package:klassrum/ui/configs/styles.dart';
-import 'package:klassrum/ui/screens/home.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter/services.dart';
 
@@ -21,37 +20,31 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _usernameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
-  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    final authBloc = context.read<AuthenticationBloc>();
-
-    void logUser() {
-      setState(() {
-        _isLoading = true;
-      });
-      // Validate returns true if the form is valid, or false otherwise.
-      if (_formKey.currentState!.validate()) {
-        // If the form is valid,
-        final String username = _usernameTextController.text;
-        final String password = _passwordTextController.text;
-        print('$username@$password');
-
-        authBloc.add(LoginUser(username: username, password: password));
-      }
-
-      setState(() {
-        _isLoading = false;
-      });
-    }
-
     return Scaffold(
-      body: BlocBuilder<AuthenticationBloc, AuthenticationState>(
-        builder: (context, state) {
-          if (state.user.uid.isNotEmpty) {
-            return const HomeScreen();
+      body: BlocConsumer<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthFailure) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+              ),
+            );
           }
+
+          if (state is AuthSuccess) {
+            Navigator.of(context).pushReplacementNamed('/home');
+          }
+        },
+        builder: (context, state) {
+          if (state is AuthLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10)
@@ -86,31 +79,33 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Gap(60),
                   Form(
                     key: _formKey,
-                    child: !_isLoading
-                        ? Column(
-                            children: [
-                              //champs d'identifiant
+                    child: Column(
+                      children: [
+                        //champs d'identifiant
 
-                              AppTextField(
-                                  icon: LineIcons.userAlt,
-                                  labelText: "Identifiant",
-                                  fieldController: _usernameTextController),
-                              const Gap(24),
-                              AppTextField(
-                                  icon: LineIcons.key,
-                                  isPasswordField: true,
-                                  labelText: "Mot de passe",
-                                  fieldController: _passwordTextController),
-                              const Gap(40),
-                              AppButton(
-                                btnText: "Se connecter",
-                                btnFunction: logUser,
-                              )
-                            ],
-                          )
-                        : const Center(
-                            child: CircularProgressIndicator(),
-                          ),
+                        AppTextField(
+                            icon: LineIcons.userAlt,
+                            labelText: "Identifiant",
+                            fieldController: _usernameTextController),
+                        const Gap(24),
+                        AppTextField(
+                            icon: LineIcons.key,
+                            isPasswordField: true,
+                            labelText: "Mot de passe",
+                            fieldController: _passwordTextController),
+                        const Gap(40),
+                        AppButton(
+                            btnText: "Se connecter",
+                            btnFunction: () {
+                              final String username =
+                                  _usernameTextController.text.trim();
+                              final String password =
+                                  _passwordTextController.text.trim();
+                              context.read<AuthBloc>().add(AuthLoginRequested(
+                                  username: username, password: password));
+                            })
+                      ],
+                    ),
                   ),
                 ],
               ),

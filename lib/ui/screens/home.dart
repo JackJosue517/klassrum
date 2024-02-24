@@ -8,7 +8,6 @@ import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_svg/svg.dart';
 
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -49,6 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
+    //context.read<WeatherBloc>().add(WeatherFetched());
   }
 
   @override
@@ -93,22 +93,21 @@ class _HomeScreenState extends State<HomeScreen> {
           const Divider(
             color: Color.fromRGBO(189, 189, 189, 1),
           ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
-              child: GNav(
-                onTabChange: _updateViews,
-                activeColor: AppColors.buttonTextColor,
-                tabBackgroundColor: AppColors.buttonColor.withOpacity(0.9),
-                padding: const EdgeInsets.all(16),
-                gap: 8,
-                tabs: const <GButton>[
-                  GButton(icon: LineIcons.book, text: 'Cours'),
-                  GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
-                  GButton(icon: LineIcons.history, text: 'Historique'),
-                ],
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+            child: GNav(
+              onTabChange: _updateViews,
+              activeColor: AppColors.buttonTextColor,
+              tabBackgroundColor: AppColors.buttonColor.withOpacity(0.9),
+              padding: const EdgeInsets.all(16),
+              gap: 8,
+              tabs: const <GButton>[
+                GButton(icon: LineIcons.book, text: 'Cours'),
+                GButton(icon: LineIcons.folderAlt, text: 'Ressources'),
+                GButton(icon: LineIcons.history, text: 'Historique'),
+              ],
             ),
+          ),
         ],
       ),
     );
@@ -164,24 +163,23 @@ class AppSearchDelegate extends SearchDelegate {
         itemCount: matchQuery.length,
         itemBuilder: (context, index) {
           var result = matchQuery[index];
-          return matchQuery.isNotEmpty ? Column(
-            children: [
-              const Text('Résultats de recherche'),
-              ListTile(
-                title: Text(result),
-              ),
-            ]
-          ) : Center(
-            child: Column(
-              children: [
-                SvgPicture.asset('assets/svg/no-update.svg'),
-                const SizedBox(
-                  height: 30,
-                ),
-                const Text('Aucune correspondance trouvée'),
-              ],
-            )
-          );
+          return matchQuery.isNotEmpty
+              ? Column(children: [
+                  const Text('Résultats de recherche'),
+                  ListTile(
+                    title: Text(result),
+                  ),
+                ])
+              : Center(
+                  child: Column(
+                  children: [
+                    SvgPicture.asset('assets/svg/no-update.svg'),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Text('Aucune correspondance trouvée'),
+                  ],
+                ));
         });
   }
 
