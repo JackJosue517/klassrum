@@ -17,7 +17,7 @@ class AuthDataProvider {
           }));
 
       if (response.statusCode != 200) {
-        return jsonEncode({'code': 'E'});
+        return 'Une erreur inattendue est survenue !!!!';
       }
       return response.body;
     } catch (e) {

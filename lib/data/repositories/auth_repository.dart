@@ -15,9 +15,6 @@ class AuthRepository {
       final String response =
           await authDataProvider.fetchStudentData(userId, jwt);
       final data = jsonDecode(response);
-      if (data['code'].toString().contains('E')) {
-        throw 'Une erreur est survenue !!!';
-      }
 
       return UserModel.fromMap(data[0]);
     } catch (e) {
@@ -29,10 +26,6 @@ class AuthRepository {
     try {
       final String response = await authDataProvider.login(username, password);
       final data = jsonDecode(response);
-
-      if (data['code'].toString().contains('E')) {
-        throw 'Une erreur inattendue est survenue!';
-      }
 
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', data['token']);
