@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:klassrum/logic/blocs/auth/auth_bloc.dart';
 import 'package:klassrum/ui/configs/styles.dart';
+import 'package:klassrum/ui/pages/call.dart';
 
 class CourseDetailsScreen extends StatelessWidget {
   const CourseDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final call = (context.read<AuthBloc>().state as AuthSuccess).userModel;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -48,28 +53,28 @@ class CourseDetailsScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                   const Text(
+                  const Text(
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
                       "INF 331 - Programmation Orientée Objet"),
-
                   const Gap(8),
                   const Text(
                       style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          ),
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                       "Les conceptes de l'orienté objet"),
                   const Gap(8),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       const Row(
+                      const Row(
                         children: [
                           CircleAvatar(
-                            backgroundImage: AssetImage('assets/img/default_profil.jpg'),
+                            backgroundImage:
+                                AssetImage('assets/img/default_profil.jpg'),
                             radius: 12,
                           ),
                           Gap(4),
@@ -112,12 +117,12 @@ class CourseDetailsScreen extends StatelessWidget {
                         Icon(
                           Icons.timelapse,
                         ),
-                         Gap(8),
-                         Text(
+                        Gap(8),
+                        Text(
                           "Lundi, 17 Juin -  12H à 14H",
                           style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18,
                           ),
                         ),
                       ],
@@ -126,8 +131,7 @@ class CourseDetailsScreen extends StatelessWidget {
                   const Gap(24),
                   const Text(
                     "Description",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold
-                    ),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const Gap(8),
                   const Text(
@@ -136,18 +140,20 @@ class CourseDetailsScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topRight,
                     child: FilledButton.tonalIcon(
-                      style:  const ButtonStyle(
+                      style: const ButtonStyle(
                           backgroundColor:
                               MaterialStatePropertyAll(AppColors.buttonColor)),
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/call-room');
+                        Navigator.of(context).pushNamed('/call-room',
+                            arguments: CallArguments(
+                                call.uid, 'JackJosue517', 'jack-517'));
                       },
                       icon: const Icon(
                         Icons.video_call,
                         color: AppColors.buttonTextColor,
                         size: 24,
                       ),
-                      label:  const Text(
+                      label: const Text(
                         "Rejoindre  la salle",
                         style: TextStyle(color: AppColors.buttonTextColor),
                       ),

@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-class AppUser extends Equatable {
+class UserModel extends Equatable {
   final String uid;
   final String username;
   final String firstname;
@@ -11,47 +11,34 @@ class AppUser extends Equatable {
   final String email;
   final String password;
   final String pic;
-
-  AppUser({
+  const UserModel({
     required this.uid,
     required this.username,
     required this.firstname,
     required this.lastname,
     required this.email,
-    required this.pic,
     required this.password,
+    required this.pic,
   });
 
-  static get empty => AppUser(
-      uid: '',
-      username: '',
-      firstname: '',
-      lastname: '',
-      email: '',
-      pic: '',
-      password: '');
-
-  AppUser copyWith(
-      {String? uid,
-      String? username,
-      String? firstname,
-      String? lastname,
-      String? email,
-      String? pic,
-      String? password}) {
-    return AppUser(
+  UserModel copyWith({
+    String? uid,
+    String? username,
+    String? firstname,
+    String? lastname,
+    String? email,
+    String? password,
+    String? pic,
+  }) {
+    return UserModel(
       uid: uid ?? this.uid,
       username: username ?? this.username,
       firstname: firstname ?? this.firstname,
       lastname: lastname ?? this.lastname,
       email: email ?? this.email,
-      pic: pic ?? this.pic,
       password: password ?? this.password,
+      pic: pic ?? this.pic,
     );
-  }
-
-  AppUser copyModel({AppUser? user}) {
-    return user ?? AppUser.empty;
   }
 
   Map<String, dynamic> toMap() {
@@ -60,37 +47,36 @@ class AppUser extends Equatable {
       'username': username,
       'firstname': firstname,
       'lastname': lastname,
-      'password': password,
       'email': email,
+      'password': password,
       'pic': pic,
     };
   }
 
-  factory AppUser.fromMap(Map<String, dynamic> map) {
-    return AppUser(
-      uid: map['_id'] as String,
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
+      uid: map['_id'].toString(),
       username: map['username'] as String,
       firstname: map['firstname'] as String,
       lastname: map['lastname'] as String,
       email: map['email'] as String,
-      //pic: map['pic'] as String,
-      pic: '',
       password: map['password'] as String,
+      pic: '', //map['pic'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory AppUser.fromJson(String source) =>
-      AppUser.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserModel.fromJson(String source) =>
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
-    return 'AppUser(uid: $uid, username: $username, firstname: $firstname, lastname: $lastname, email: $email, pic: $pic)';
+    return 'UserModel(uid: $uid, username: $username, firstname: $firstname, lastname: $lastname, email: $email, password: $password, pic: $pic)';
   }
 
   @override
-  bool operator ==(covariant AppUser other) {
+  bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
 
     return other.uid == uid &&
@@ -98,6 +84,7 @@ class AppUser extends Equatable {
         other.firstname == firstname &&
         other.lastname == lastname &&
         other.email == email &&
+        other.password == password &&
         other.pic == pic;
   }
 
@@ -108,6 +95,7 @@ class AppUser extends Equatable {
         firstname.hashCode ^
         lastname.hashCode ^
         email.hashCode ^
+        password.hashCode ^
         pic.hashCode;
   }
 
