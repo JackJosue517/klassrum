@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         initial: AdaptiveThemeMode.light,
         builder: (theme, darkTheme) => MultiBlocProvider(
               providers: [
-                BlocProvider(create: (context) => AuthenticationBloc())
+                BlocProvider(create: (context) => AuthenticationBloc(), lazy: false)
               ],
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
