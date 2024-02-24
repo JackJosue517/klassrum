@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
@@ -64,6 +63,3 @@ class NotificationModel {
   @override
   int get hashCode => title.hashCode ^ subtitle.hashCode ^ type.hashCode;
 }
-=======
-class NotificationModel{}
->>>>>>> refs/remotes/origin/main

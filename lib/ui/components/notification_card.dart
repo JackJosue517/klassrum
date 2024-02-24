@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:klassrum/data/models/AppNotification.dart';
+import 'package:klassrum/data/models/notification_model.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:line_icons/line_icons.dart';
 
