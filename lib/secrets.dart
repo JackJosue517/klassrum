@@ -1,5 +1,5 @@
 //* ZEGO APP ID
-const String appID = '1142574398';
+const int appID = 1142574398;
 
 //* ZEGO APP SIGN
 const String appSign =

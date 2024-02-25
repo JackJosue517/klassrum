@@ -10,7 +10,7 @@ class CallPage extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as CallArguments;
 
     return ZegoUIKitPrebuiltCall(
-      appID: appID as int,
+      appID: appID,
       appSign: appSign,
       userID: args.uid,
       userName: args.username,
