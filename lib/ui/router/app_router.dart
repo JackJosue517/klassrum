@@ -23,7 +23,7 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const CourseDetailsScreen());
       case '/call-room':
         return MaterialPageRoute(
-          settings: setttings,
+          settings: routeSettings,
           builder: (_) => const CallPage(),
         );
       case '/settings':
