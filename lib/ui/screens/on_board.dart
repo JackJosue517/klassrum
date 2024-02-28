@@ -81,7 +81,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   SmoothPageIndicator(
                     controller: _controller,
                     count: 3,
-                    effect:  WormEffect(
+                    effect:  const WormEffect(
                       activeDotColor: AppColors.primaryColor,
                     ),
                   ),

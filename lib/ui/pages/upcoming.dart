@@ -38,7 +38,7 @@ class UpComingPage extends StatelessWidget {
                       color: AppColors.buttonColor,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Row(
+                    child: const Row(
                       children: [
                         Icon(
                           Icons.calendar_month,

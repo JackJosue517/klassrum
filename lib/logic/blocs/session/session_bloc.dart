@@ -7,7 +7,7 @@ part 'session_state.dart';
 class SessionBloc extends Bloc<SessionEvent, SessionState> {
   SessionBloc() : super(SessionInitial()) {
     on<SessionEvent>((event, emit) {
-      // TODO: implement event handler
+      // implement event handler
     });
   }
 }

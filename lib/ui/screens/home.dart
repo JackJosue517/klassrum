@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:klassrum/ui/configs/styles.dart';
 import 'package:klassrum/ui/pages/history.dart';
-import 'package:klassrum/ui/pages/resources.dart';
+import 'package:klassrum/ui/pages/ressources.dart';
 import 'package:klassrum/ui/pages/upcoming.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_svg/svg.dart';
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   final viewItems = const <Widget>[
     UpComingPage(),
-    ResourcePage(),
+    RessourcesPage(),
     HistoryPage(),
   ];
 
