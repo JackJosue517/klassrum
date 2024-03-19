@@ -1,6 +1,6 @@
 //* ZEGO APP ID
-const int appID = 1142574398;
+const int appID = 417457760;
 
 //* ZEGO APP SIGN
 const String appSign =
-    'f113e295601ef883a963eec14460058ba2b5e9408c4cf3dff80bcb38bc4e3f1c';
+    '188e2bc2f1b03ebd646b53693ae9e443edaa43741ed707e033cb96c56928004f';

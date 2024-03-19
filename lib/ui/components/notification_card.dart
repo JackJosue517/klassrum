@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:klassrum/data/models/notification_model.dart';
 import 'package:klassrum/ui/configs/styles.dart';
-import 'package:line_icons/line_icons.dart';
 
-/*class NotificationCard extends StatelessWidget {
-   NotificationCard({
+class NotificationCard extends StatelessWidget {
+  const NotificationCard({
     super.key,
     required this.title,
     required this.subtitle,
-    required this.state,
-  }) : iconColor = detectColors(state);
+    required this.type,
+  });
 
   final String title;
   final String subtitle;
   final NotificationType type;
-  final Color iconColor; // Propriété de couleur globale
 
   @override
   Widget build(BuildContext context) {
@@ -22,29 +20,27 @@ import 'package:line_icons/line_icons.dart';
       elevation: 0,
       child: ListTile(
         title: Text(title, style: AppText.headline5),
-        leading: switch (type) {
-          NotificationType.newSession => Icon(LineIcons.bell, color: iconColor),
-          NotificationType.removeSession => Icon(LineIcons.trash, color: iconColor),
-          NotificationType.modifySession => Icon(LineIcons.editAlt, color: iconColor),
-          NotificationType.information => Icon(LineIcons.infoCircle, color: iconColor),
-        },
+        leading: Icon(
+          Icons.notification_important,
+          color: detectColors(type),
+        ),
         subtitle: Text(subtitle, style: AppText.headline6),
       ),
     );
   }
 
-  static Color detectColors(String state) {
-    switch (state) {
-      case "annuler":
+  static Color detectColors(NotificationType type) {
+    switch (type) {
+      case NotificationType.cancelSession:
         return Colors.red;
-      case "valider":
+      case NotificationType.newSession:
         return Colors.green;
-      case "modifier":
+      case NotificationType.modifySession:
         return Colors.blue;
-      case "debuter":
+      case NotificationType.information:
         return Colors.blueGrey;
       default:
         return Colors.black;
     }
   }
-}*/
+}

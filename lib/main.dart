@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:klassrum/data/dataproviders/auth_provider.dart';
@@ -11,6 +12,7 @@ import 'package:klassrum/ui/screens/splash.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
@@ -22,6 +24,10 @@ void main() async {
   );
 
   Bloc.observer = const AuthenticationObserver();
+  await Firebase.initializeApp();
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  print("FCM TOKEN: $fcmToken");
+  //TODO Send token to backend resource
   initializeDateFormatting().then((_) => runApp(const MyApp()));
 }
 

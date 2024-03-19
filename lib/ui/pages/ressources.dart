@@ -95,7 +95,7 @@ class RessourcesPage extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Gap(4),
+                    const Gap(4),
                     Expanded(
                         child: Container(
                       clipBehavior: Clip.antiAlias,
@@ -227,7 +227,7 @@ class DocumentsMediaCard extends StatelessWidget {
     return Expanded(
         child: Padding(
       padding: const EdgeInsets.all(1),
-      child: Container(
+      child: SizedBox(
         height: 60,
         child: Icon(
           iconData,

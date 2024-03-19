@@ -109,7 +109,7 @@ class CourseComponent extends StatelessWidget {
                 ],
               ),
             )),
-        Gap(12)
+        const Gap(12)
       ],
     );
   }

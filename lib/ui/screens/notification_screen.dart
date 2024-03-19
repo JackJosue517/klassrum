@@ -1,8 +1,8 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:klassrum/data/models/notification_model.dart';
 import 'package:klassrum/ui/components/go_back_button.dart';
 import 'package:klassrum/ui/components/notification_card.dart';
-import 'package:klassrum/ui/components/notification_tile.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:klassrum/ui/configs/styles.dart';
@@ -63,12 +63,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
                               _deleteOneNotification(index),
                         )
                       ]),
-                  child: NotificationCard(
+                  child: const NotificationCard(
                     title: 'Nouvelle session de cours',
                     subtitle:
                     'Vous avez prochainement cours avec M. HOETOWOU',
-                    icon: LineIcons.bell,
-                    state: "annuler",
+                    type: NotificationType.cancelSession,
                   ),
                 )))
             : Center(
@@ -96,10 +95,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 }
 
-enum NotificationType { newSession, doAction }
 
 class NotificationData {
   final String title;
   final String subtitle;
   const NotificationData({required this.title, required this.subtitle});
-}*/
+}
