@@ -146,7 +146,7 @@ class CourseDetailsScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).pushNamed('/call-room',
                             arguments: CallArguments(
-                                call.uid, 'JackJosue517', 'jack-517'));
+                                'jack517', 'AYITEY Kodjo Josué', 'call01'));
                       },
                       icon: const Icon(
                         Icons.video_call,

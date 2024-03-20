@@ -14,9 +14,13 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:path_provider/path_provider.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   Bloc.observer = AppBlocObserver();
 
   HydratedBloc.storage = await HydratedStorage.build(
@@ -24,7 +28,6 @@ void main() async {
   );
 
   Bloc.observer = const AuthenticationObserver();
-  await Firebase.initializeApp();
   final fcmToken = await FirebaseMessaging.instance.getToken();
   print("FCM TOKEN: $fcmToken");
   //TODO Send token to backend resource

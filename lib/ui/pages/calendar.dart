@@ -62,58 +62,60 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 350,
-      child: Column(
-        children: [
-          Expanded(
-            child: TableCalendar(
-              locale: 'fr_FR',
-              rowHeight: 43,
-              calendarFormat: _calendarFormat,
-              onFormatChanged: _onFormatChanged,
-              selectedDayPredicate: (day) => isSameDay(day, _selectedDay),
-              availableGestures: AvailableGestures.all,
-              firstDay: _firstDay,
-              lastDay: _lastDay,
-              focusedDay: _focusedDay,
-              onDaySelected: _onDaySelected,
-              calendarStyle: const CalendarStyle(
-                weekendTextStyle: TextStyle(
-                  color: AppColors.primaryColor,
+    return Expanded(
+      child: SizedBox(
+        height: 350,
+        child: Column(
+          children: [
+            Expanded(
+              child: TableCalendar(
+                locale: 'fr_FR',
+                rowHeight: 43,
+                calendarFormat: _calendarFormat,
+                onFormatChanged: _onFormatChanged,
+                selectedDayPredicate: (day) => isSameDay(day, _selectedDay),
+                availableGestures: AvailableGestures.all,
+                firstDay: _firstDay,
+                lastDay: _lastDay,
+                focusedDay: _focusedDay,
+                onDaySelected: _onDaySelected,
+                calendarStyle: const CalendarStyle(
+                  weekendTextStyle: TextStyle(
+                    color: AppColors.primaryColor,
+                  ),
                 ),
+                eventLoader: (day) => _getEventsForDay(day),
               ),
-              eventLoader: (day) => _getEventsForDay(day),
             ),
-          ),
-          const Divider(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8)),
-                child: const Icon(
-                  Icons.close,
-                  color: Colors.white,
+            const Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.green,
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(8)),
-                child: const Icon(
-                  Icons.check,
-                  color: Colors.white,
-                  weight: 700,
-                ),
-              )
-            ],
-          )
-        ],
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.green,
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: const Icon(
+                    Icons.check,
+                    color: Colors.white,
+                    weight: 700,
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

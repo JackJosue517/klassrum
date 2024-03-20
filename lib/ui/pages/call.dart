@@ -15,7 +15,22 @@ class CallPage extends StatelessWidget {
       userID: args.uid,
       userName: args.username,
       callID: args.callID,
-      config: ZegoUIKitPrebuiltCallConfig.groupVideoCall(),
+
+      // Modify your custom configurations here.
+      config: ZegoUIKitPrebuiltCallConfig.groupVideoCall()
+        ..avatarBuilder = (BuildContext context, Size size, ZegoUIKitUser? user,
+            Map extraInfo) {
+          return user != null
+              ? Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: AssetImage('assets/img/default_profil.jpg'),
+                    ),
+                  ),
+                )
+              : const SizedBox();
+        },
     );
   }
 }

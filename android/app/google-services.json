@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "146657631176",
+    "firebase_url": "https://klassrum-2884d-default-rtdb.firebaseio.com",
+    "project_id": "klassrum-2884d",
+    "storage_bucket": "klassrum-2884d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146657631176:android:b152c2bd053820d7bcfefd",
+        "android_client_info": {
+          "package_name": "com.example.klassrum"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByL0hFIOB1EVuVQVabeY6IeiNA6aT4j5I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
