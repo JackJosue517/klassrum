@@ -62,4 +62,4 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          document: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
