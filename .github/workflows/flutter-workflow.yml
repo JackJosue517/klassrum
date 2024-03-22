@@ -23,7 +23,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: release-apk
-          path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -36,7 +36,7 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          document: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
@@ -49,7 +49,7 @@ jobs:
             Repository: ${{ github.repository }}
             
             See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
-          document: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          document: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
       - name: send telegram message on push
         uses: appleboy/telegram-action@master
         with:
